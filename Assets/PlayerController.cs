@@ -5,11 +5,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    public float speed;
-    public float max;
+    public float speedf;
+    public float speedm;
     public float jumpp;
     public bool grounded;
-    public bool death;
+    public bool walled;
 
     private Rigidbody2D rbd;
     private Animator ani;
@@ -25,10 +25,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Control de ñas animaciones en base a las distintas variables de posicion y velocidad
+      
         ani.SetFloat("Speed", Mathf.Abs(rbd.velocity.x));
+        ani.SetFloat("Fall", Mathf.Abs(rbd.velocity.y));
         ani.SetBool("Grounded", grounded);
-        ani.SetBool("Death", death);
+        ani.SetBool("Walled", walled);
         //*
         if (Input.GetKeyDown(KeyCode.UpArrow) && grounded)
         {
@@ -37,31 +38,61 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        //Adhesion de fuerza al jugador según las flechaz horizontales, además de establecimiento de su limite
         float p = Input.GetAxis("Horizontal");
-        //Cambio en la dirección del spritem de jugador acorde a su dirección de velocidad
+ 
         if (p > 0f)
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
-            rbd.velocity = new Vector2(max, rbd.velocity.y);
+            rbd.velocity = new Vector2(speedm, rbd.velocity.y);
         }
         else if (p < 0f)
         {
             transform.localScale = new Vector3(-1f, 1f, 1f);
-            rbd.velocity = new Vector2(-max, rbd.velocity.y);
+            rbd.velocity = new Vector2(-speedm, rbd.velocity.y);
         }
         else
         {
             rbd.velocity = new Vector2(0, rbd.velocity.y);
         }
-            //Impulso del salto en caso de presionar la flecha superior*
         if (jump)
         {
             rbd.AddForce(Vector2.up * jumpp, ForceMode2D.Impulse);
             jump = false;
         }
+    }
 
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Ground")
+        {
+            grounded = true;
+            walled = false;
+        }
+        if (col.gameObject.tag == "Wall")
+        {
+            grounded = true;
+            walled = true;
+        }
+    }
 
+    void OnCollisionExit2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Ground")
+        {
+            grounded = false;
+        }
+        if (col.gameObject.tag == "Wall")
+        {
+            grounded = false;
+            walled = false;
+        }
+    }
 
+    void OnCollisionStay2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Wall")
+        {
+            rbd.AddForce(Vector2.down * speedf, ForceMode2D.Impulse);
+        }
     }
 }
