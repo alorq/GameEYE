@@ -151,7 +151,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &97493138
 BoxCollider2D:
@@ -263,9 +263,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a67d5f8e9cce0541b8085c2a0773ec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedf: 3
-  speedm: 16
-  jumpp: 20
+  speedf: 2.75
+  speedm: 7
+  jumpp: 16
   grounded: 0
   walled: 0
 --- !u!1 &128256891
@@ -464,8 +464,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d71f97e7258390c4d90c5c439157ca3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outshot: 0.1
-  proyectile: {fileID: 1505964889960230, guid: 651b353b7d5c39b46add8cbc09181eef, type: 2}
 --- !u!212 &481615972
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -608,8 +606,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d71f97e7258390c4d90c5c439157ca3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outshot: 0.1
-  proyectile: {fileID: 1505964889960230, guid: 651b353b7d5c39b46add8cbc09181eef, type: 2}
 --- !u!1 &681485890
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,8 +731,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d71f97e7258390c4d90c5c439157ca3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outshot: 0.1
-  proyectile: {fileID: 1505964889960230, guid: 651b353b7d5c39b46add8cbc09181eef, type: 2}
 --- !u!212 &875196172
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -889,7 +883,7 @@ GameObject:
   - component: {fileID: 1095855454}
   m_Layer: 0
   m_Name: Quad
-  m_TagString: Ground
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1339,7 +1333,7 @@ GameObject:
   - component: {fileID: 1701855700}
   m_Layer: 0
   m_Name: Quad (1)
-  m_TagString: Ground
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

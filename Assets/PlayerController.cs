@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
         ani.SetFloat("Fall", Mathf.Abs(rbd.velocity.y));
         ani.SetBool("Grounded", grounded);
         ani.SetBool("Walled", walled);
-        //*
+        
         if (Input.GetKeyDown(KeyCode.UpArrow) && grounded)
         {
             jump = true;
