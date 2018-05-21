@@ -8,6 +8,8 @@ TagManager:
   - Ground
   - Spikes
   - Wall
+  - limites
+  - limitei
   layers:
   - Default
   - TransparentFX

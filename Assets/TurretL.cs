@@ -23,7 +23,7 @@ public class TurretL : MonoBehaviour {
     {
         //establecimiento de los tiempos de disparo, esto para determinar cuan seguido la torreta creara y lanzara disparos
         float distance = Vector3.Distance(player.position, transform.position);
-        if ((player.position.x - transform.position.x) > 0.3 && distance < range)
+        if ((player.position.x - transform.position.x) > 0.7f && distance < range)
         {
             Vector3 dir = (player.position - transform.position);
             Quaternion lookRotation = Quaternion.LookRotation(dir);
