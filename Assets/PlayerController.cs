@@ -5,15 +5,15 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    public float speedf;
-    public float speedm;
-    public float jumpp;
-    public bool grounded;
-    public bool walled;
+    public float velocidadcaida;
+    public float velocidadmovi;
+    public float fuerzasalto;
+    public bool terrenofirme;
+    public bool colgado;
 
     private Rigidbody2D rbd;
     private Animator ani;
-    private bool jump;
+    private bool disparadorsalto;
 
     // Use this for initialization
     void Start()
@@ -28,12 +28,12 @@ public class PlayerController : MonoBehaviour
       
         ani.SetFloat("Speed", Mathf.Abs(rbd.velocity.x));
         ani.SetFloat("Fall", Mathf.Abs(rbd.velocity.y));
-        ani.SetBool("Grounded", grounded);
-        ani.SetBool("Walled", walled);
+        ani.SetBool("terrenofirme", terrenofirme);
+        ani.SetBool("colgado", colgado);
         
-        if (Input.GetKeyDown(KeyCode.UpArrow) && grounded)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && terrenofirme)
         {
-            jump = true;
+            disparadorsalto = true;
         }
     }
     private void FixedUpdate()
@@ -43,21 +43,21 @@ public class PlayerController : MonoBehaviour
         if (p > 0f)
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
-            rbd.velocity = new Vector2(speedm, rbd.velocity.y);
+            rbd.velocity = new Vector2(velocidadmovi, rbd.velocity.y);
         }
         else if (p < 0f)
         {
             transform.localScale = new Vector3(-1f, 1f, 1f);
-            rbd.velocity = new Vector2(-speedm, rbd.velocity.y);
+            rbd.velocity = new Vector2(-velocidadmovi, rbd.velocity.y);
         }
         else
         {
             rbd.velocity = new Vector2(0, rbd.velocity.y);
         }
-        if (jump)
+        if (disparadorsalto)
         {
-            rbd.AddForce(Vector2.up * jumpp, ForceMode2D.Impulse);
-            jump = false;
+            rbd.AddForce(Vector2.up * fuerzasalto, ForceMode2D.Impulse);
+            disparadorsalto = false;
         }
     }
 
@@ -65,11 +65,11 @@ public class PlayerController : MonoBehaviour
     {
         if (col.gameObject.tag == "Ground")
         {
-            grounded = false;
+            terrenofirme = false;
         }
         if (col.gameObject.tag == "Wall")
         {
-            walled = false;
+            colgado = false;
         }
     }
 
@@ -77,13 +77,13 @@ public class PlayerController : MonoBehaviour
     {
         if (col.gameObject.tag == "Ground")
         {
-            grounded = true;
-            walled = false;
+            terrenofirme = true;
+            colgado = false;
         }
         if (col.gameObject.tag == "Wall")
         {
-            grounded = true;
-            walled = true;
+            terrenofirme = true;
+            colgado = true;
         }
     }
 
@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
     {
         if (col.gameObject.tag == "Wall")
         {
-            rbd.AddForce(Vector2.down * speedf, ForceMode2D.Impulse);
+            rbd.AddForce(Vector2.down * velocidadcaida, ForceMode2D.Impulse);
         }
     }
 }
