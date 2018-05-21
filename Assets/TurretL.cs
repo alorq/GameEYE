@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : MonoBehaviour {
+public class TurretL : MonoBehaviour {
     private float timeshot;
     public float outshot;
     public GameObject bullet;
@@ -17,12 +17,13 @@ public class Turret : MonoBehaviour {
         timeshot = outshot;
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
-	
-	// Update is called once per frame
-	void FixedUpdate () {
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
         //establecimiento de los tiempos de disparo, esto para determinar cuan seguido la torreta creara y lanzara disparos
         float distance = Vector3.Distance(player.position, transform.position);
-        if(distance<range)
+        if ((player.position.x - transform.position.x) > 0.3 && distance < range)
         {
             Vector3 dir = (player.position - transform.position);
             Quaternion lookRotation = Quaternion.LookRotation(dir);
@@ -42,5 +43,4 @@ public class Turret : MonoBehaviour {
         }
 
     }
-        
 }
