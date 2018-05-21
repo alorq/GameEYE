@@ -35,13 +35,22 @@ public class Jugador : MonoBehaviour {
 
     void Start () {	
 	}
-	
-	void Update () {
-        if (Input.GetKeyDown(KeyCode.Q)){
-            scriptStat.ValorActual -= 10;
-        }
-        if (Input.GetKeyDown(KeyCode.W)){
-            scriptStat.ValorActual += 10;
+
+    void OnTriggerStay2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Espina")
+        {
+            scriptStat.ValorActual -= 44;
         }
     }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Bala")
+        {
+            scriptStat.ValorActual -= 18;
+        }
+    }
+
+    
 }
