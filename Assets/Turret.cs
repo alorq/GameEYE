@@ -15,7 +15,7 @@ public class Turret : MonoBehaviour {
     void Start()
     {
         timeshot = outshot;
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Jugador").transform;
 
     }
 	

@@ -25,11 +25,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
-        ani.SetFloat("Speed", Mathf.Abs(rbd.velocity.x));
-        ani.SetFloat("Fall", Mathf.Abs(rbd.velocity.y));
-        ani.SetBool("terrenofirme", terrenofirme);
-        ani.SetBool("colgado", colgado);
+        ani.SetFloat("Velocidad", Mathf.Abs(rbd.velocity.x));
+        ani.SetFloat("Caida", Mathf.Abs(rbd.velocity.y));
+        ani.SetBool("Terrenofirme", terrenofirme);
+        ani.SetBool("Colgado", colgado);
         
         if (Input.GetKeyDown(KeyCode.UpArrow) && terrenofirme)
         {
@@ -70,6 +69,7 @@ public class PlayerController : MonoBehaviour
         if (col.gameObject.tag == "Wall")
         {
             colgado = false;
+            terrenofirme = false;
         }
     }
 
