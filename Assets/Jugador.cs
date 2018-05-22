@@ -27,10 +27,10 @@ using UnityEngine;
  */
 
 public class Jugador : MonoBehaviour {
-    [SerializeField] private Estadistica scriptStat;
+    [SerializeField] private Estadistica vida;
 
     void Awake(){
-        scriptStat.Inicializar();
+        vida.Inicializar();
     }
 
     void Start () {	
@@ -40,7 +40,7 @@ public class Jugador : MonoBehaviour {
     {
         if (col.gameObject.tag == "Espina")
         {
-            scriptStat.ValorActual -= 44;
+            vida.ValorActual -= 44;
         }
     }
 
@@ -48,7 +48,7 @@ public class Jugador : MonoBehaviour {
     {
         if (col.gameObject.tag == "Bala")
         {
-            scriptStat.ValorActual -= 18;
+            vida.ValorActual -= 18;
         }
     }
 

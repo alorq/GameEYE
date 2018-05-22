@@ -28,7 +28,7 @@ using UnityEngine;
 
 [Serializable]
 public class Estadistica{
-    [SerializeField] private BarraVida scriptVida;
+    [SerializeField] private BarraVida vida;
     [SerializeField] private float maximoVida;
     [SerializeField] private float valorActual;
 
@@ -38,7 +38,7 @@ public class Estadistica{
         }
         set{
             this.valorActual = Mathf.Clamp(value, 0, MaximoVida);
-            scriptVida.Valor = valorActual;
+            vida.Valor = valorActual;
         }
     }
 
@@ -48,7 +48,7 @@ public class Estadistica{
         }
         set{
             maximoVida = value;
-            scriptVida.ValorMaximo = maximoVida;
+            vida.ValorMaximo = maximoVida;
         }
     }
 
