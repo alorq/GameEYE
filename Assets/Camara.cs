@@ -2,7 +2,7 @@
 
 public class Camara : MonoBehaviour
 {
-    private Transform Target;
+    [SerializeField]private Transform Target;
     private float Velocidad = 0.125f;
     private Vector3 offset;
 
