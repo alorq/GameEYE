@@ -4,7 +4,7 @@ public class Camara : MonoBehaviour
 {
     [SerializeField]private Transform Target;
     private float Velocidad = 0.125f;
-    private Vector3 offset;
+    [SerializeField]private Vector3 offset;
 
     void FixedUpdate()
     {
