@@ -41,12 +41,12 @@ public class PlayerController : MonoBehaviour
  
         if (p > 0f)
         {
-            transform.localScale = new Vector3(1f, 1f, 1f);
+            transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
             rbd.velocity = new Vector2(velocidadmovi, rbd.velocity.y);
         }
         else if (p < 0f)
         {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
+            transform.localScale = new Vector3(-0.7f, 0.7f, 0.7f);
             rbd.velocity = new Vector2(-velocidadmovi, rbd.velocity.y);
         }
         else
@@ -62,11 +62,11 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionExit2D(Collision2D col)
     {
-        if (col.gameObject.tag == "Ground")
+        if (col.gameObject.tag == "Terreno")
         {
             terrenofirme = false;
         }
-        if (col.gameObject.tag == "Wall")
+        if (col.gameObject.tag == "Muro")
         {
             colgado = false;
             terrenofirme = false;
@@ -75,12 +75,12 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "Ground")
+        if (col.gameObject.tag == "Terreno")
         {
             terrenofirme = true;
             colgado = false;
         }
-        if (col.gameObject.tag == "Wall")
+        if (col.gameObject.tag == "Muro")
         {
             terrenofirme = true;
             colgado = true;
@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D col)
     {
-        if (col.gameObject.tag == "Wall")
+        if (col.gameObject.tag == "Muro")
         {
             rbd.AddForce(Vector2.down * velocidadcaida, ForceMode2D.Impulse);
         }
