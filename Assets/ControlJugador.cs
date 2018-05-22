@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ControlJugador : MonoBehaviour
 {
-
     public float velocidadcaida;
     public float velocidadmovi;
     public float fuerzasalto;
@@ -14,12 +14,18 @@ public class ControlJugador : MonoBehaviour
     private Rigidbody2D rbd;
     private Animator ani;
     private bool disparadorsalto;
+    private int vida = 250;
+    private int vidaActual;
+    private bool vivo = true;
+    private double count = 100;
 
     // Use this for initialization
+    
     void Start()
     {
         rbd = GetComponent<Rigidbody2D>();
         ani = GetComponent<Animator>();
+        vidaActual = vida;
     }
 
     // Update is called once per frame
@@ -29,34 +35,48 @@ public class ControlJugador : MonoBehaviour
         ani.SetFloat("Caida", Mathf.Abs(rbd.velocity.y));
         ani.SetBool("Terrenofirme", terrenofirme);
         ani.SetBool("Colgado", colgado);
-        
+        ani.SetBool("Vivo", vivo);
+
         if (Input.GetKeyDown(KeyCode.UpArrow) && terrenofirme)
         {
             disparadorsalto = true;
         }
     }
-    private void FixedUpdate()
+    void FixedUpdate()
     {
-        float p = Input.GetAxis("Horizontal");
- 
-        if (p > 0f)
+        if (vidaActual <= 0)
         {
-            transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
-            rbd.velocity = new Vector2(velocidadmovi, rbd.velocity.y);
+            vivo = false;
+            count -= 0.1;
         }
-        else if (p < 0f)
+        
+        if (vivo)
         {
-            transform.localScale = new Vector3(-0.7f, 0.7f, 0.7f);
-            rbd.velocity = new Vector2(-velocidadmovi, rbd.velocity.y);
-        }
-        else
-        {
-            rbd.velocity = new Vector2(0, rbd.velocity.y);
-        }
-        if (disparadorsalto)
-        {
-            rbd.AddForce(Vector2.up * fuerzasalto, ForceMode2D.Impulse);
-            disparadorsalto = false;
+            float p = Input.GetAxis("Horizontal");
+
+            if (p > 0f)
+            {
+                transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+                rbd.velocity = new Vector2(velocidadmovi, rbd.velocity.y);
+            }
+            else if (p < 0f)
+            {
+                transform.localScale = new Vector3(-0.7f, 0.7f, 0.7f);
+                rbd.velocity = new Vector2(-velocidadmovi, rbd.velocity.y);
+            }
+            else
+            {
+                rbd.velocity = new Vector2(0, rbd.velocity.y);
+            }
+            if (disparadorsalto)
+            {
+                rbd.AddForce(Vector2.up * fuerzasalto, ForceMode2D.Impulse);
+                disparadorsalto = false;
+            }
+            if (count == 0)
+            {
+                SceneManager.LoadScene("Menu");
+            }
         }
     }
 
@@ -87,13 +107,34 @@ public class ControlJugador : MonoBehaviour
         }
     }
 
-    
-
     void OnCollisionStay2D(Collision2D col)
     {
         if (col.gameObject.tag == "Muro")
         {
             rbd.AddForce(Vector2.down * velocidadcaida, ForceMode2D.Impulse);
+            terrenofirme = true;
+        }
+        if (col.gameObject.tag == "Terreno")
+        {
+            terrenofirme=true;
         }
     }
+
+    void OnTriggerStay2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Espina" && vidaActual>0)
+        {
+            vidaActual -= 1;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Bala")
+        {
+            vidaActual -= 18;
+        }
+    }
+
+
 }

@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 156c5202f95d44549aab3127ca3319ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 0}
+  Target: {fileID: 4523251298352482, guid: 232b2545a771d724c8886b88f28c600f, type: 2}
   offset: {x: 0, y: 0, z: -10}
 --- !u!212 &212586929944881050
 SpriteRenderer:
