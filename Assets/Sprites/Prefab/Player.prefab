@@ -117,11 +117,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a67d5f8e9cce0541b8085c2a0773ec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedf: 2.52
-  speedm: 7
-  jumpp: 16
-  grounded: 0
-  walled: 0
+  velocidadcaida: 0
+  velocidadmovi: 0
+  fuerzasalto: 0
+  terrenofirme: 0
+  colgado: 0
 --- !u!212 &212734272408607012
 SpriteRenderer:
   m_ObjectHideFlags: 1
