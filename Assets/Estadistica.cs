@@ -27,7 +27,7 @@ using UnityEngine;
  */
 
 [Serializable]
-public class Stat{
+public class Estadistica{
     [SerializeField] private BarraVida scriptVida;
     [SerializeField] private float maximoVida;
     [SerializeField] private float valorActual;

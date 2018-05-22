@@ -27,7 +27,7 @@ using UnityEngine;
  */
 
 public class Jugador : MonoBehaviour {
-    [SerializeField] private Stat scriptStat;
+    [SerializeField] private Estadistica scriptStat;
 
     void Awake(){
         scriptStat.Inicializar();
