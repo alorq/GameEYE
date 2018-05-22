@@ -6,11 +6,10 @@ TagManager:
   tags:
   - Undefined
   - Ground
-  - Spikes
   - Wall
   - limites
   - limitei
-  - Jugador
+  - Espina
   layers:
   - Default
   - TransparentFX
