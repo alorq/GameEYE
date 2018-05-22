@@ -47,7 +47,7 @@ public class ControlJugador : MonoBehaviour
         if (vidaActual <= 0)
         {
             vivo = false;
-            count -= 0.1;
+            count -= 1.2;
         }
         
         if (vivo)
@@ -72,12 +72,13 @@ public class ControlJugador : MonoBehaviour
             {
                 rbd.AddForce(Vector2.up * fuerzasalto, ForceMode2D.Impulse);
                 disparadorsalto = false;
-            }
-            if (count == 0)
-            {
-                SceneManager.LoadScene("Menu");
-            }
+            }   
         }
+        if (count < 0)
+        {
+            SceneManager.LoadScene("Menu");
+        }
+        Debug.Log(vidaActual);
     }
 
     void OnCollisionExit2D(Collision2D col)
@@ -105,6 +106,10 @@ public class ControlJugador : MonoBehaviour
             terrenofirme = true;
             colgado = true;
         }
+        if (col.gameObject.tag == "Finish")
+        {
+            SceneManager.LoadScene("Menu");
+        }
     }
 
     void OnCollisionStay2D(Collision2D col)
@@ -124,7 +129,7 @@ public class ControlJugador : MonoBehaviour
     {
         if (col.gameObject.tag == "Espina" && vidaActual>0)
         {
-            vidaActual -= 1;
+            vidaActual -= 2;
         }
     }
 
@@ -132,7 +137,7 @@ public class ControlJugador : MonoBehaviour
     {
         if (col.gameObject.tag == "Bala")
         {
-            vidaActual -= 18;
+            vidaActual -= 45;
         }
     }
 

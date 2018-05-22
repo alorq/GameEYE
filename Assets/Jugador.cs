@@ -16,7 +16,7 @@ public class Jugador : MonoBehaviour {
     {
         if (col.gameObject.tag == "Espina")
         {
-            vida.ValorActual -= 1;
+            vida.ValorActual -= 2;
         }
     }
 
@@ -24,7 +24,7 @@ public class Jugador : MonoBehaviour {
     {
         if (col.gameObject.tag == "Bala")
         {
-            vida.ValorActual -= 18;
+            vida.ValorActual -= 45;
         }
     }
 
