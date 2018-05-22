@@ -36,9 +36,9 @@
 
 public class Camara : MonoBehaviour
 {
-    public Transform Target;
-    public float Velocidad = 0.125f;
-    public Vector3 offset;
+    private Transform Target;
+    private float Velocidad = 0.125f;
+    private Vector3 offset;
 
     void FixedUpdate()
     {
