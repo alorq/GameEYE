@@ -156,6 +156,11 @@ Prefab:
       propertyPath: m_Name
       value: Terrain (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 50745679795348358, guid: cacd1a8655213ac45b8ebe441d21ff84,
+        type: 2}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cacd1a8655213ac45b8ebe441d21ff84, type: 2}
   m_IsPrefabParent: 0
@@ -348,7 +353,7 @@ Terrain:
   m_GameObject: {fileID: 128256891}
   m_Enabled: 1
   serializedVersion: 3
-  m_TerrainData: {fileID: 15600000, guid: be7449100004c3346af2a52510ee75c0, type: 2}
+  m_TerrainData: {fileID: 0}
   m_TreeDistance: 5000
   m_TreeBillboardDistance: 50
   m_TreeCrossFadeLength: 5
@@ -382,7 +387,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &187064166
 Prefab:
@@ -1033,7 +1038,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4942726148178356, guid: cacd1a8655213ac45b8ebe441d21ff84, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1047463137633456, guid: cacd1a8655213ac45b8ebe441d21ff84, type: 2}
       propertyPath: m_Name
@@ -1204,7 +1209,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4674404223999228, guid: ca6809b102534164482d32a6f017ab29, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1157671053217656, guid: ca6809b102534164482d32a6f017ab29, type: 2}
       propertyPath: m_Name
@@ -1444,7 +1449,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4942726148178356, guid: cacd1a8655213ac45b8ebe441d21ff84, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1047463137633456, guid: cacd1a8655213ac45b8ebe441d21ff84, type: 2}
       propertyPath: m_Name
@@ -1523,7 +1528,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1484166440
 Prefab:
