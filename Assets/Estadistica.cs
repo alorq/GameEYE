@@ -17,9 +17,6 @@ using UnityEngine;
  * 
  *Parametros modificables
  * Maximo Vida y Valor Actual se pueden modificar desde el inspector
- * 
- *Autores
- * FlaminEon
  *
  *Changelog
  * Version (1.0) domingo 20 de mayo 2018
