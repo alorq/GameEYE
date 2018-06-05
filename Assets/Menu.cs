@@ -3,16 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Menu : MonoBehaviour
-{
-
-    public void Jugar()
-    {
+public class Menu : MonoBehaviour{
+    public void Jugar(){
         SceneManager.LoadScene("cxcvxv");
     }
 
-    public void Salir()
-    {
+    public void Salir(){
         Application.Quit();
     }
 }

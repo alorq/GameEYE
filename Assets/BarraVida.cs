@@ -21,9 +21,6 @@ using UnityEngine.UI;
  *Parametros modificables
  * velocidadTransicion puede ser modificado desde el inspector para variar la velocidad de
  * actualizacion de la barra
- * 
- *Autores
- * FlaminEon
  *
  *Changelog
  * Version (1.0) domingo 20 de mayo 2018
