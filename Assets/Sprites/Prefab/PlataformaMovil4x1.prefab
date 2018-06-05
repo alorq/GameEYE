@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 61646846689160194}
   m_Layer: 0
   m_Name: PlataformaMovil4x1
-  m_TagString: Movil
+  m_TagString: Terreno
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -232,7 +232,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1000
+  m_Mass: 1000000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeb33789e045f21459ef46d7f877002c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadmovi: 3
+  velocidadmovi: 3.5
   derecho: 0
 --- !u!212 &212272381424271548
 SpriteRenderer:

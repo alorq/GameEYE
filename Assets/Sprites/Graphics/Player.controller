@@ -222,7 +222,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 4
     m_ConditionEvent: Velocidad
-    m_EventTreshold: 0.01
+    m_EventTreshold: 3.6
   - m_ConditionMode: 1
     m_ConditionEvent: Terrenofirme
     m_EventTreshold: 0
@@ -255,7 +255,7 @@ AnimatorStateTransition:
     m_EventTreshold: 0.01
   - m_ConditionMode: 3
     m_ConditionEvent: Velocidad
-    m_EventTreshold: 0.01
+    m_EventTreshold: 3.6
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102341501017668348}
   m_Solo: 1
