@@ -96,7 +96,7 @@ public class ControlJugador : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "Terreno")
+        if (col.gameObject.tag == "Terreno" || col.gameObject.tag == "Movil")
         {
             terrenofirme = true;
             colgado = false;
