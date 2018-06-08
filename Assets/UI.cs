@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Pausa : MonoBehaviour {
+public class UI : MonoBehaviour {
     // Dado que los botones son hijos de TextoPausa, estaran ocultos
     // junto a el, es decir, solo TextoPausa requiere el tag "enPausa"
     GameObject objetoPausa;
