@@ -1,13 +1,20 @@
-﻿using UnityEngine;
+﻿/*
+ * Camara es un script asociado al GameObject Camara que 
+ * se encarga de seguir al jugador durante el nivel
+ */
+using UnityEngine;
 
 public class Camara : MonoBehaviour{
-    [SerializeField]private Transform Target;
-    private float Velocidad = 0.125f;
-    [SerializeField]private Vector3 offset;
+    private GameObject jugador;
+    private Vector3 offset;
 
-    void LateUpdate(){
-        Vector3 posicion = Target.position + offset;
-        Vector3 suavizado = Vector3.Lerp(transform.position, posicion, Velocidad);
-        transform.position = suavizado;
+    private void Start()
+    {
+        jugador = GameObject.FindGameObjectWithTag("Jugador");
+        offset = transform.position - jugador.transform.position;
+    }
+    void LateUpdate()
+    {
+        transform.position = jugador.transform.position + offset;
     }
 }

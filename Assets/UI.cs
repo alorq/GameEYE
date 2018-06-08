@@ -1,9 +1,7 @@
 ﻿/*
- * Este script se encarga del proceso de pausa durante el juego.
- * Permite tambien reiniciar el nivel asi como salir de el.
+ * UI se encarga de mostrar los menu de pausa y muerte, asi
+ * como entregarle la funcionalidad a los botones de cada menu
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,7 +15,7 @@ public class UI : MonoBehaviour {
     ControlJugador controlJugador;
 
     // Se inicia con tiempo normal y se hallan los GameObject que corresponden a los
-    // menues
+    // menu
 	void Start ()
     {
         Time.timeScale = 1;
@@ -53,22 +51,34 @@ public class UI : MonoBehaviour {
 	}
 
     // Permite salir de pausa sin requerir apretar 'P'
-    // mediante un boton grafico
-    public void botonContinuar()
+    // mediante un boton
+    public void BotonContinuar()
     {
         Time.timeScale = 1;
         objetoPausa.SetActive(false);
     }
 
     // Reinicia la escena volviendola a cargar
-    public void botonReiniciar()
+    public void BotonReiniciar()
     {
         SceneManager.LoadScene("cxcvxv");
     }
 
     // Sale del nivel y retorna al menu principal
-    public void botonSalir()
+    public void BotonSalir()
     {
-        SceneManager.LoadScene("Menu");
+        if(SceneManager.GetActiveScene().name == "cxcvxv")
+        {
+            SceneManager.LoadScene("Menu");
+        }
+        else
+        {
+            Application.Quit();
+        }
+    }
+
+    public void BotonJugar()
+    {
+        SceneManager.LoadScene("cxcvxv");
     }
 }
