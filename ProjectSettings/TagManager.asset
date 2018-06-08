@@ -17,6 +17,7 @@ TagManager:
   - Movil
   - enPausa
   - enMuerte
+  - MovilActual
   layers:
   - Default
   - TransparentFX

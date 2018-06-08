@@ -60,7 +60,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3
-  m_Material: {fileID: 6200000, guid: 774fdaa8a1ae3074999453c3d6b1ba6a, type: 2}
+  m_Material: {fileID: 6200000, guid: 754c1cbdb7ddbbf48bf4ab35633c5ceb, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -138,6 +138,7 @@ MonoBehaviour:
   fuerzasalto: 16
   terrenofirme: 0
   colgado: 0
+  vivo: 1
 --- !u!212 &212505809075602896
 SpriteRenderer:
   m_ObjectHideFlags: 1
