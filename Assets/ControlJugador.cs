@@ -14,7 +14,7 @@ public class ControlJugador : MonoBehaviour{
     private bool disparadorsalto;
     private int vida = 250;
     private int vidaActual;
-    private bool vivo = true;
+    public bool vivo = true;
     private double count = 100;
 
     void Start(){
@@ -108,4 +108,5 @@ public class ControlJugador : MonoBehaviour{
             vidaActual -= 45;
         }
     }
+
 }

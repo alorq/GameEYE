@@ -8,20 +8,30 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class UI : MonoBehaviour {
-    // Dado que los botones son hijos de TextoPausa, estaran ocultos
-    // junto a el, es decir, solo TextoPausa requiere el tag "enPausa"
+    // Dado que los botones son hijos de Pausa, estaran ocultos
+    // junto a el, es decir, solo Pausa requiere el tag "enPausa"
     GameObject objetoPausa;
+    // Lo mismo aplica para Muerte
+    GameObject objetoMuerte;
+    // Para poder acceder a la variable de vivo del Jugador
+    ControlJugador controlJugador;
 
+    // Se inicia con tiempo normal y se hallan los GameObject que corresponden a los
+    // menues
 	void Start ()
     {
         Time.timeScale = 1;
         objetoPausa = GameObject.FindGameObjectWithTag("enPausa");
         objetoPausa.SetActive(false);
+        objetoMuerte = GameObject.FindGameObjectWithTag("enMuerte");
+        objetoMuerte.SetActive(false);
+
+        controlJugador = GameObject.FindGameObjectWithTag("Jugador").GetComponent<ControlJugador>();
 	}
 	
 	void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P) && controlJugador.vivo == true)
         {
             if(Time.timeScale == 1)
             {
@@ -33,6 +43,12 @@ public class UI : MonoBehaviour {
                 Time.timeScale = 1;
                 objetoPausa.SetActive(false);
             }
+        }
+
+        if(controlJugador.vivo == false)
+        {
+            Time.timeScale = 0;
+            objetoMuerte.SetActive(true);
         }
 	}
 
