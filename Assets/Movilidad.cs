@@ -15,15 +15,15 @@ public class Movilidad : MonoBehaviour {
 
     // Update is called once per frame
     void FixedUpdate() {
-        if (rbd.velocity.x > 1)
+        if (rbd.velocity.x > 0.2)
         {
             derecho = true;
         }
-        if (rbd.velocity.x < -1)
+        if (rbd.velocity.x < -0.2)
         {
             derecho = false;
         }
-
+        
     }
 
     void OnCollisionEnter2D(Collision2D col)
@@ -38,6 +38,18 @@ public class Movilidad : MonoBehaviour {
             {
                 rbd.velocity = new Vector2(velocidadmovi, 0);
             }
+        }
+        if (col.gameObject.tag == "Jugador")
+        {
+            gameObject.tag = "MovilActual";
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Jugador")
+        {
+            gameObject.tag = "Movil";
         }
     }
 }

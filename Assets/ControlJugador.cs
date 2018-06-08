@@ -10,6 +10,7 @@ public class ControlJugador : MonoBehaviour{
     [SerializeField] public bool terrenofirme;
     [SerializeField] public bool colgado;
     private Rigidbody2D rbd;
+    private Rigidbody2D plataformamovil;
     private Animator ani;
     private bool disparadorsalto;
     private int vida = 250;
@@ -35,12 +36,13 @@ public class ControlJugador : MonoBehaviour{
     }
 
     void FixedUpdate(){
+        Debug.Log(rbd.velocity.x);
+        float p = Input.GetAxis("Horizontal");
         if (vidaActual <= 0){
             vivo = false;
             count -= 1.2;
         }
         if (vivo){
-            float p = Input.GetAxis("Horizontal");
             if (p > 0f){
                 transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
                 rbd.velocity = new Vector2(velocidadmovi, rbd.velocity.y);
@@ -60,11 +62,11 @@ public class ControlJugador : MonoBehaviour{
         if (count < 0){
             SceneManager.LoadScene("Menu");
         }
-        Debug.Log(vidaActual);
     }
 
     void OnCollisionExit2D(Collision2D col){
-        if (col.gameObject.tag == "Terreno"){
+        if (col.gameObject.tag == "Terreno" || col.gameObject.tag == "MovilActual")
+        {
             terrenofirme = false;
         }
         if (col.gameObject.tag == "Muro"){
@@ -74,7 +76,8 @@ public class ControlJugador : MonoBehaviour{
     }
 
     void OnCollisionEnter2D(Collision2D col){
-        if (col.gameObject.tag == "Terreno"){
+        if (col.gameObject.tag == "Terreno" || col.gameObject.tag == "Movil")
+        {
             terrenofirme = true;
             colgado = false;
         }
@@ -88,12 +91,22 @@ public class ControlJugador : MonoBehaviour{
     }
 
     void OnCollisionStay2D(Collision2D col){
-        if (col.gameObject.tag == "Muro"){
+        float p = Input.GetAxis("Horizontal");
+        if (col.gameObject.tag == "Muro" ){
             rbd.AddForce(Vector2.down * velocidadcaida, ForceMode2D.Impulse);
             terrenofirme = true;
         }
-        if (col.gameObject.tag == "Terreno"){
+        if (col.gameObject.tag == "Terreno")
+        {
             terrenofirme=true;
+        }
+        if (col.gameObject.tag == "MovilActual" && p == 0f)
+        {
+            terrenofirme = true;
+            plataformamovil = GameObject.FindGameObjectWithTag("MovilActual").GetComponent<Rigidbody2D>();
+            rbd.velocity = new Vector2(plataformamovil.velocity.x, rbd.velocity.y);
+            Debug.Log(plataformamovil.velocity.x);
+
         }
     }
 
