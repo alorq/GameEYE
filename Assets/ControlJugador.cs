@@ -9,8 +9,8 @@ public class ControlJugador : MonoBehaviour{
     [SerializeField] public float fuerzasalto;
     [SerializeField] public bool terrenofirme;
     [SerializeField] public bool colgado;
+    [SerializeField] public float max;
     private Rigidbody2D rbd;
-    private Rigidbody2D plataformamovil;
     private Animator ani;
     private bool disparadorsalto;
     private int vida = 250;
@@ -36,29 +36,39 @@ public class ControlJugador : MonoBehaviour{
     }
 
     void FixedUpdate(){
-        Debug.Log(rbd.velocity.x);
-        float p = Input.GetAxis("Horizontal");
-        if (vidaActual <= 0){
-            vivo = false;
-            count -= 1.2;
-        }
-        if (vivo){
-            if (p > 0f){
-                transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
-                rbd.velocity = new Vector2(velocidadmovi, rbd.velocity.y);
+       
+        float h = Input.GetAxis("Horizontal");
+        if (vivo)
+        {
+            rbd.AddForce(Vector2.right*velocidadmovi*h, ForceMode2D.Impulse);
+            Debug.Log(rbd.velocity.x);
+            Debug.Log(h);
+            Debug.Log(velocidadmovi);
+            float limite = Mathf.Clamp(rbd.velocity.x, -max, max);
+            rbd.velocity = new Vector2(limite, rbd.velocity.y);
+            if (h == 0)
+            {
+                rbd.velocity = new Vector2(0f, rbd.velocity.y);
             }
-            else if (p < 0f){
-                transform.localScale = new Vector3(-0.7f, 0.7f, 0.7f);
-                rbd.velocity = new Vector2(-velocidadmovi, rbd.velocity.y);
-            }
-            else{
-                rbd.velocity = new Vector2(0, rbd.velocity.y);
-            }
-            if (disparadorsalto){
+            if (disparadorsalto)
+            {
                 rbd.AddForce(Vector2.up * fuerzasalto, ForceMode2D.Impulse);
                 disparadorsalto = false;
-            }   
+            }
         }
+        if (h < 0)
+        {
+            transform.localScale = new Vector3(-0.7f, 0.7f, 0.7f);
+        }
+        if (h > 0)
+        {
+            transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+        }
+        if (vidaActual <= 0){
+            vivo = false;
+            count -= 1.2;  
+        }
+       
         if (count < 0){
             SceneManager.LoadScene("Menu");
         }
@@ -82,7 +92,7 @@ public class ControlJugador : MonoBehaviour{
             colgado = false;
         }
         if (col.gameObject.tag == "Muro"){
-            terrenofirme = true;
+            terrenofirme = false;
             colgado = true;
         }
         if (col.gameObject.tag == "Finish"){
@@ -93,8 +103,7 @@ public class ControlJugador : MonoBehaviour{
     void OnCollisionStay2D(Collision2D col){
         float p = Input.GetAxis("Horizontal");
         if (col.gameObject.tag == "Muro" ){
-            rbd.AddForce(Vector2.down * velocidadcaida, ForceMode2D.Impulse);
-            terrenofirme = true;
+            terrenofirme = false;
         }
         if (col.gameObject.tag == "Terreno")
         {
@@ -103,10 +112,6 @@ public class ControlJugador : MonoBehaviour{
         if (col.gameObject.tag == "MovilActual" && p == 0f)
         {
             terrenofirme = true;
-            plataformamovil = GameObject.FindGameObjectWithTag("MovilActual").GetComponent<Rigidbody2D>();
-            rbd.velocity = new Vector2(plataformamovil.velocity.x, rbd.velocity.y);
-            Debug.Log(plataformamovil.velocity.x);
-
         }
     }
 
