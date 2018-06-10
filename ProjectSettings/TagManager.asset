@@ -17,6 +17,8 @@ TagManager:
   - Movil
   - enPausa
   - enMuerte
+  - consumibleVida
+  - consumibleMunicion
   layers:
   - Default
   - TransparentFX

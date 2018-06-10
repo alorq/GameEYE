@@ -175,6 +175,11 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 0.7033548
       objectReference: {fileID: 0}
+    - target: {fileID: 95407290242577854, guid: 232b2545a771d724c8886b88f28c600f,
+        type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d5ef3f2c52e11574ba04c0331d3fb564, type: 2}
     m_RemovedComponents:
     - {fileID: 114851638107039320, guid: 232b2545a771d724c8886b88f28c600f, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 232b2545a771d724c8886b88f28c600f, type: 2}
@@ -860,7 +865,7 @@ Prefab:
     - target: {fileID: 20534406306033744, guid: b8e874afee32094468922fd5364bbb35,
         type: 2}
       propertyPath: orthographic size
-      value: 3.3574727
+      value: 2.9461846
       objectReference: {fileID: 0}
     - target: {fileID: 4418243034607860, guid: b8e874afee32094468922fd5364bbb35, type: 2}
       propertyPath: m_LocalScale.x
