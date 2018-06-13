@@ -19,6 +19,8 @@ TagManager:
   - enMuerte
   - consumibleVida
   - consumibleMunicion
+  - Suelo
+  - Salto
   layers:
   - Default
   - TransparentFX
