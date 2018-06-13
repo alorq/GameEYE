@@ -6,5 +6,9 @@ PhysicsMaterial2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Pared
+<<<<<<< HEAD
   friction: 0.000001
+=======
+  friction: 0.4
+>>>>>>> d80a7971d41b296de499904430e5a4e4d87e202d
   bounciness: 0
