@@ -5,6 +5,6 @@ PhysicsMaterial2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Deslizante
-  friction: 0.4
+  m_Name: Pared
+  friction: 0.000001
   bounciness: 0
