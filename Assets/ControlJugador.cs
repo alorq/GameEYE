@@ -35,15 +35,12 @@ public class ControlJugador : MonoBehaviour{
         }
     }
 
-    void FixedUpdate(){
-       
+    void FixedUpdate() {
+
         float h = Input.GetAxis("Horizontal");
         if (vivo)
         {
-            rbd.AddForce(Vector2.right*velocidadmovi*h, ForceMode2D.Impulse);
-            Debug.Log(rbd.velocity.x);
-            Debug.Log(h);
-            Debug.Log(velocidadmovi);
+            rbd.velocity = new Vector2(velocidadmovi*h, rbd.velocity.y);
             float limite = Mathf.Clamp(rbd.velocity.x, -max, max);
             rbd.velocity = new Vector2(limite, rbd.velocity.y);
             if (h == 0)
@@ -75,7 +72,7 @@ public class ControlJugador : MonoBehaviour{
     }
 
     void OnCollisionExit2D(Collision2D col){
-        if (col.gameObject.tag == "Terreno" || col.gameObject.tag == "MovilActual")
+        if (col.gameObject.tag == "Terreno")
         {
             terrenofirme = false;
         }
@@ -83,13 +80,24 @@ public class ControlJugador : MonoBehaviour{
             colgado = false;
             terrenofirme = false;
         }
+        if (col.gameObject.tag == "Movil")
+        {
+            terrenofirme = false;
+            transform.parent = null;
+        }
     }
 
     void OnCollisionEnter2D(Collision2D col){
-        if (col.gameObject.tag == "Terreno" || col.gameObject.tag == "Movil")
+        if (col.gameObject.tag == "Terreno")
         {
             terrenofirme = true;
             colgado = false;
+        }
+        if (col.gameObject.tag == "Movil")
+        {
+            terrenofirme = true;
+            colgado = false;
+            transform.parent = col.transform;
         }
         if (col.gameObject.tag == "Muro"){
             terrenofirme = false;
@@ -100,16 +108,16 @@ public class ControlJugador : MonoBehaviour{
         }
     }
 
-    void OnCollisionStay2D(Collision2D col){
+    void OnCollisionStay2D(Collision2D col) {
         float p = Input.GetAxis("Horizontal");
-        if (col.gameObject.tag == "Muro" ){
+        if (col.gameObject.tag == "Muro") {
             terrenofirme = false;
         }
         if (col.gameObject.tag == "Terreno")
         {
-            terrenofirme=true;
+            terrenofirme = true;
         }
-        if (col.gameObject.tag == "MovilActual" && p == 0f)
+        if (col.gameObject.tag == "Movil")
         {
             terrenofirme = true;
         }
