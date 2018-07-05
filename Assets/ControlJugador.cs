@@ -76,10 +76,7 @@ public class ControlJugador : MonoBehaviour{
         {
             terrenofirme = false;
         }
-        if (col.gameObject.tag == "Muro"){
-            colgado = false;
-            terrenofirme = false;
-        }
+      
         if (col.gameObject.tag == "Movil")
         {
             terrenofirme = false;
@@ -91,17 +88,11 @@ public class ControlJugador : MonoBehaviour{
         if (col.gameObject.tag == "Terreno")
         {
             terrenofirme = true;
-            colgado = false;
         }
         if (col.gameObject.tag == "Movil")
         {
             terrenofirme = true;
-            colgado = false;
             transform.parent = col.transform;
-        }
-        if (col.gameObject.tag == "Muro"){
-            terrenofirme = false;
-            colgado = true;
         }
         if (col.gameObject.tag == "Finish"){
             SceneManager.LoadScene("Menu");
@@ -110,9 +101,6 @@ public class ControlJugador : MonoBehaviour{
 
     void OnCollisionStay2D(Collision2D col) {
         float p = Input.GetAxis("Horizontal");
-        if (col.gameObject.tag == "Muro") {
-            terrenofirme = false;
-        }
         if (col.gameObject.tag == "Terreno")
         {
             terrenofirme = true;
