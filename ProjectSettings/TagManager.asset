@@ -21,6 +21,7 @@ TagManager:
   - consumibleMunicion
   - Suelo
   - Salto
+  - CeilingSpike
   layers:
   - Default
   - TransparentFX
