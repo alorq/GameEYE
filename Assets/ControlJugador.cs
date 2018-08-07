@@ -8,8 +8,8 @@ public class ControlJugador : MonoBehaviour{
     [SerializeField] public float velocidadmovi;
     [SerializeField] public float fuerzasalto;
     [SerializeField] public bool terrenofirme;
-    [SerializeField] public bool colgado;
     [SerializeField] public float max;
+    [SerializeField] public float fuerzaimpulso;
     private Rigidbody2D rbd;
     private Animator ani;
     private bool disparadorsalto;
@@ -28,7 +28,6 @@ public class ControlJugador : MonoBehaviour{
         ani.SetFloat("Velocidad", Mathf.Abs(rbd.velocity.x));
         ani.SetFloat("Caida", Mathf.Abs(rbd.velocity.y));
         ani.SetBool("Terrenofirme", terrenofirme);
-        ani.SetBool("Colgado", colgado);
         ani.SetBool("Vivo", vivo);
         if (Input.GetKeyDown(KeyCode.UpArrow) && terrenofirme){
             disparadorsalto = true;
@@ -40,9 +39,7 @@ public class ControlJugador : MonoBehaviour{
         float h = Input.GetAxis("Horizontal");
         if (vivo)
         {
-            rbd.velocity = new Vector2(velocidadmovi*h, rbd.velocity.y);
-            float limite = Mathf.Clamp(rbd.velocity.x, -max, max);
-            rbd.velocity = new Vector2(limite, rbd.velocity.y);
+            rbd.velocity = new Vector2(velocidadmovi * h, rbd.velocity.y);
             if (h == 0)
             {
                 rbd.velocity = new Vector2(0f, rbd.velocity.y);
@@ -61,11 +58,15 @@ public class ControlJugador : MonoBehaviour{
         {
             transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
         }
-        if (vidaActual <= 0){
+        if (vidaActual <= 0) {
             vivo = false;
-            count -= 1.2;  
+            count -= 1.2;
         }
-       
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            rbd.AddForce(Vector2.up * fuerzaimpulso, ForceMode2D.Impulse);
+            float limite = Mathf.Clamp(rbd.velocity.x, -max, max);
+        }
         if (count < 0){
             SceneManager.LoadScene("Menu");
         }
