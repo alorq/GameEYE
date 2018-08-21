@@ -3,24 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Consumible : MonoBehaviour {
-    AudioSource audio;
+    private AudioSource sonido;
 
-	// Use this for initialization
 	void Start () {
-        audio = gameObject.GetComponent<AudioSource>();
+        sonido = gameObject.GetComponent<AudioSource>();
+        
     }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-    void OnCollisionEnter2D(Collider2D collision)
+    void OnCollisionEnter2D(Collision2D col)
     {
-        if(collision.transform.gameObject.name == "Jugador")
+        if(col.gameObject.name == "Jugador")
         {
-            audio.Play();
-            Destroy(this.gameObject);
+            sonido.Play();
+            this.GetComponent<CircleCollider2D>().enabled = !this.GetComponent<CircleCollider2D>().enabled;
+            this.gameObject.GetComponent<Renderer>().enabled = false;
+            Object.Destroy(this.gameObject, sonido.clip.length);
         }
     }
 }

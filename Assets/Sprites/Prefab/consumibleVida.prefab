@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212698059620394736}
   - component: {fileID: 82356942544154774}
   - component: {fileID: 114472674551672168}
-  - component: {fileID: 58267925713272514}
+  - component: {fileID: 58707637730078386}
   m_Layer: 0
   m_Name: consumibleVida
   m_TagString: consumibleVida
@@ -37,13 +37,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1553150335463332}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -64.92119, y: -3.0662358, z: 0}
+  m_LocalPosition: {x: -65.32865, y: -3.3173664, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &58267925713272514
+--- !u!58 &58707637730078386
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
