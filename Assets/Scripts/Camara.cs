@@ -4,17 +4,16 @@
  */
 using UnityEngine;
 
-public class Camara : MonoBehaviour{
-    private GameObject jugador;
-    private Vector3 offset;
+public class Camara : MonoBehaviour
+{
+    public Transform Target;
+    public float Velocidad = 0.125f;
+    public Vector3 offset;
 
-    private void Start()
+    void FixedUpdate()
     {
-        jugador = GameObject.FindGameObjectWithTag("Jugador");
-        offset = transform.position - jugador.transform.position;
-    }
-    void LateUpdate()
-    {
-        transform.position = jugador.transform.position + offset;
+        Vector3 posicion = Target.position + offset;
+        Vector3 suavizado = Vector3.Lerp(transform.position, posicion, Velocidad);
+        transform.position = suavizado;
     }
 }
