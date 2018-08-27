@@ -17,7 +17,7 @@ public class CeilingSpike : MonoBehaviour{
 	}
 
     void caida (){
-        RaycastHit2D deteccionJugador = Physics2D.Raycast(deteccionInicio.position, -Vector2.up, 50f);
+        RaycastHit2D deteccionJugador = Physics2D.Raycast(deteccionInicio.position, Vector2.down, 50f);
         if (deteccionJugador.collider.gameObject.tag == "Jugador"){
             rb.gravityScale = 3;
         }

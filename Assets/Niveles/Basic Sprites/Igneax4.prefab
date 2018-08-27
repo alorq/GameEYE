@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 61529351856581786}
   m_Layer: 0
   m_Name: Igneax4
-  m_TagString: Untagged
+  m_TagString: Terreno
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

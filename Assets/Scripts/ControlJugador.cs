@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ControlJugador : MonoBehaviour{
-    [SerializeField] public float velocidadcaida;
+public class ControlJugador : MonoBehaviour {
     [SerializeField] public float velocidadmovi;
     [SerializeField] public float fuerzasalto;
-    [SerializeField] public bool terrenofirme;
+    [SerializeField] public bool terreno;
     [SerializeField] public float max;
-    [SerializeField] public float fuerzaimpulso;
     private Rigidbody2D rbd;
     private Animator ani;
     private bool disparadorsalto;
@@ -25,17 +23,19 @@ public class ControlJugador : MonoBehaviour{
     }
 
     void Update(){
-        ani.SetFloat("Velocidad", Mathf.Abs(rbd.velocity.x));
-        ani.SetFloat("Caida", Mathf.Abs(rbd.velocity.y));
-        ani.SetBool("Terrenofirme", terrenofirme);
+        ani.SetFloat("velocidad", Mathf.Abs(rbd.velocity.x));
+        ani.SetFloat("gravedad", Mathf.Abs(rbd.velocity.y));
+        ani.SetBool("terreno", terreno);
         ani.SetBool("Vivo", vivo);
-        if (Input.GetKeyDown(KeyCode.UpArrow) && terrenofirme){
-            disparadorsalto = true;
-        }
+       
     }
 
     void FixedUpdate() {
 
+        if (Input.GetKeyDown(KeyCode.UpArrow) && rbd.velocity.y == 0)
+        {
+            disparadorsalto = true;
+        }
         float h = Input.GetAxis("Horizontal");
         if (vivo)
         {
@@ -52,20 +52,15 @@ public class ControlJugador : MonoBehaviour{
         }
         if (h < 0)
         {
-            transform.localScale = new Vector3(-0.7f, 0.7f, 0.7f);
+            transform.localScale = new Vector3(-1f, 1f, 1f);
         }
         if (h > 0)
         {
-            transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+            transform.localScale = new Vector3(1f, 1f, 1f);
         }
         if (vidaActual <= 0) {
             vivo = false;
             count -= 1.2;
-        }
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            rbd.AddForce(Vector2.up * fuerzaimpulso, ForceMode2D.Impulse);
-            float limite = Mathf.Clamp(rbd.velocity.x, -max, max);
         }
         if (count < 0){
             SceneManager.LoadScene("Menu");
@@ -75,12 +70,12 @@ public class ControlJugador : MonoBehaviour{
     void OnCollisionExit2D(Collision2D col){
         if (col.gameObject.tag == "Terreno")
         {
-            terrenofirme = false;
+            terreno = false;
         }
       
         if (col.gameObject.tag == "Movil")
         {
-            terrenofirme = false;
+            terreno = false;
             transform.parent = null;
         }
     }
@@ -88,11 +83,11 @@ public class ControlJugador : MonoBehaviour{
     void OnCollisionEnter2D(Collision2D col){
         if (col.gameObject.tag == "Terreno")
         {
-            terrenofirme = true;
+            terreno = true;
         }
         if (col.gameObject.tag == "Movil")
         {
-            terrenofirme = true;
+            terreno = true;
             transform.parent = col.transform;
         }
         if (col.gameObject.tag == "Finish"){
@@ -101,14 +96,17 @@ public class ControlJugador : MonoBehaviour{
     }
 
     void OnCollisionStay2D(Collision2D col) {
-        float p = Input.GetAxis("Horizontal");
         if (col.gameObject.tag == "Terreno")
         {
-            terrenofirme = true;
+            terreno = true;
+        }
+        if (col.gameObject.tag == "Muro")
+        {
+            terreno = true;
         }
         if (col.gameObject.tag == "Movil")
         {
-            terrenofirme = true;
+            terreno = true;
         }
     }
 

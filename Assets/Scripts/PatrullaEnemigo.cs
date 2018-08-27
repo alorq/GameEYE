@@ -14,10 +14,11 @@ public class PatrullaEnemigo : MonoBehaviour {
     }
 
     private void Update () {
-        Movimiento();
+      
     }
 
     private void FixedUpdate(){
+        Movimiento();
         Salto();
     }
 
@@ -42,7 +43,7 @@ public class PatrullaEnemigo : MonoBehaviour {
                 movimientoDerecha = true;
             }
         }
-        if (contactoPared.collider == true){
+        if (contactoPared.collider == true && contactoPared.collider.gameObject.tag!="Jugador"){
             if (movimientoDerecha == true){
                 transform.eulerAngles = new Vector3(0, -180, 0);
                 movimientoDerecha = false;
