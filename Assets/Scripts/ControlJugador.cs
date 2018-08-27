@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ControlJugador : MonoBehaviour{
+public class ControlJugador : MonoBehaviour {
     [SerializeField] public float velocidadmovi;
     [SerializeField] public float fuerzasalto;
     [SerializeField] public bool terreno;
-    [SerializeField] public float fuerzaimpulso;
+    [SerializeField] public float max;
     private Rigidbody2D rbd;
     private Animator ani;
     private bool disparadorsalto;
