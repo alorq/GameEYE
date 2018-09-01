@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class scriptPausa : MonoBehaviour {
 
+    public static bool playerIsDed = false;
     public static bool juegoEnPausa;
     public GameObject IUPausa;
+    public GameObject IUGameOver;
 
 	void Update () {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -20,7 +22,18 @@ public class scriptPausa : MonoBehaviour {
             }
 
         }
-	}
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            playerIsDed = true;
+        }
+
+        if (playerIsDed)
+        {
+            StartCoroutine(GameOver());
+        }
+
+    }
 
     public void Continuar()
     {
@@ -34,5 +47,16 @@ public class scriptPausa : MonoBehaviour {
         IUPausa.SetActive(true);
         Time.timeScale = 0f;
         juegoEnPausa = true;
+    }
+
+    IEnumerator GameOver()
+    {
+        playerIsDed = false;
+        Debug.Log("Mistakes were made...");
+        yield return new WaitForSeconds(2f);
+        Debug.Log("Activando Game Over");
+        IUGameOver.SetActive(true);
+        Time.timeScale = 0f;
+        Debug.Log("Juego ahora en pausa");
     }
 }
