@@ -23,6 +23,7 @@ public class EnemigoPatrulla : MonoBehaviour
 
     void Movimiento()
     {
+        rb.
         transform.Translate(Vector2.right * velocidad * Time.deltaTime);
         RaycastHit2D contactoSuelo = Physics2D.Raycast(deteccion.position, Vector2.down, 5f);
         RaycastHit2D contactoPared = Physics2D.Raycast(deteccion.position, Vector2.right, 0.1f);
