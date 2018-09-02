@@ -6,8 +6,12 @@ public class EnemigoPatrulla : MonoBehaviour
 {
 
     [SerializeField] public float velocidadSalto;
+    [SerializeField] Transform player;
     [SerializeField] public float velocidad;
     [SerializeField] public Transform deteccion;
+    [SerializeField] public float zonahostil;
+    bool v = true;
+
     private bool movimientoDerecha = true;
     public Rigidbody2D rb;
 
@@ -23,8 +27,14 @@ public class EnemigoPatrulla : MonoBehaviour
 
     void Movimiento()
     {
-        rb.
-        transform.Translate(Vector2.right * velocidad * Time.deltaTime);
+        if (v == true)
+        {
+            transform.Translate(Vector2.right * velocidad * Time.deltaTime);
+        }
+        else
+        {
+            transform.Translate(Vector2.right * velocidad*1.5f * Time.deltaTime);
+        }
         RaycastHit2D contactoSuelo = Physics2D.Raycast(deteccion.position, Vector2.down, 5f);
         RaycastHit2D contactoPared = Physics2D.Raycast(deteccion.position, Vector2.right, 0.1f);
         if (contactoSuelo.collider == false)
@@ -52,6 +62,25 @@ public class EnemigoPatrulla : MonoBehaviour
                 transform.eulerAngles = new Vector3(0, 0, 0);
                 movimientoDerecha = true;
             }
+        }
+        float k= transform.position.x - player.position.x;
+        if (Mathf.Abs(k) < zonahostil && Mathf.Abs(transform.position.y-player.position.y)<5f)
+        {
+            v = false;
+            if (k < 0 && movimientoDerecha == true)
+            {
+                transform.eulerAngles = new Vector3(0, -180, 0);
+                movimientoDerecha = false;
+            }
+            if (k > 0 && movimientoDerecha == false)
+            {
+                transform.eulerAngles = new Vector3(0, 0, 0);
+                movimientoDerecha = true;
+            }
+        }
+        else
+        {
+            v = true;
         }
     }
 }

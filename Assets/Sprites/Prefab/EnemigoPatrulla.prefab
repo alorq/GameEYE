@@ -66,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1422027196084594}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.268246, y: 8.260157, z: 0}
+  m_LocalPosition: {x: 87.43418, y: -6.332324, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4506998529265868}
@@ -107,7 +107,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.3}
   serializedVersion: 2
-  m_Radius: 1.96
+  m_Radius: 3
 --- !u!95 &95038999962305392
 Animator:
   serializedVersion: 3
@@ -138,8 +138,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidadSalto: 0
-  velocidad: -30
+  player: {fileID: 0}
+  velocidad: -12
   deteccion: {fileID: 4506998529265868}
+  zonahostil: 30
   rb: {fileID: 50614272319577378}
 --- !u!212 &212274351955126100
 SpriteRenderer:

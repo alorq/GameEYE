@@ -52,7 +52,6 @@ public class Turret : MonoBehaviour {
                 rb = bullet.GetComponent<Rigidbody2D>();
                 rb.isKinematic = false;
                 rb.velocity=nor*velocidadbala;
-                Debug.Log(nor);
                 timeshot = outshot;
             }
             else{
