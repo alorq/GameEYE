@@ -59,7 +59,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 9
   m_Material: {fileID: 6200000, guid: a2e537e466f79d54da7083749c3397f3, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -134,10 +134,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a67d5f8e9cce0541b8085c2a0773ec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadmovi: 30
-  fuerzasalto: 30
+  velocidadMovimiento: 30
+  fuerzaSalto: 50
   terreno: 0
-  fuerzaimpulso: 20
+  canionR: {fileID: 0}
+  canionL: {fileID: 0}
+  bulletPrefab: {fileID: 0}
+  velocidadBala: 0
+  totalAmountOfBullets: 0
+  bullets: []
   vivo: 1
 --- !u!212 &212007112860971162
 SpriteRenderer:

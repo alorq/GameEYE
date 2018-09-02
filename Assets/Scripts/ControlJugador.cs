@@ -4,20 +4,19 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ControlJugador : MonoBehaviour {
-    [SerializeField] public float velocidadmovi;
-    [SerializeField] public float fuerzasalto;
+    [SerializeField] public float velocidadMovimiento;
+    [SerializeField] public float fuerzaSalto;
     [SerializeField] public bool terreno;
-    [SerializeField] public float max;
-    [SerializeField] private Transform canonr;
-    [SerializeField] private Transform canonl;
+    [SerializeField] private Transform canionR;
+    [SerializeField] private Transform canionL;
     [SerializeField] GameObject bulletPrefab;
-    [SerializeField] private float velocidadbala;
+    [SerializeField] private float velocidadBala;
     [SerializeField] int totalAmountOfBullets;
     [SerializeField] List<GameObject> bullets = new List<GameObject>();
     private Rigidbody2D rbd;
     private Animator ani;
-    private bool disparadorsalto;
-    private int vida = 250;
+    private bool salto;
+    private int vidaMax = 250;
     private int vidaActual;
     public bool vivo = true;
     private double count = 100;
@@ -25,7 +24,7 @@ public class ControlJugador : MonoBehaviour {
     void Start(){
         rbd = GetComponent<Rigidbody2D>();
         ani = GetComponent<Animator>();
-        vidaActual = vida;
+        vidaActual = vidaMax;
         for (int i = 0; i < totalAmountOfBullets; i++)
         {
             GameObject bullet = Instantiate(bulletPrefab, new Vector3(-1000, -1000, -1000), Quaternion.identity);
@@ -39,7 +38,7 @@ public class ControlJugador : MonoBehaviour {
         ani.SetFloat("velocidad", Mathf.Abs(rbd.velocity.x));
         ani.SetFloat("gravedad", Mathf.Abs(rbd.velocity.y));
         ani.SetBool("terreno", terreno);
-        ani.SetBool("Vivo", vivo);
+        ani.SetBool("vivo", vivo);
        
     }
 
@@ -53,43 +52,43 @@ public class ControlJugador : MonoBehaviour {
             bullet.SetActive(false);
             if (ren.flipX == false)
             {
-                bullet.transform.position = canonr.position;
-                bullet.transform.rotation = canonr.rotation;
+                bullet.transform.position = canionR.position;
+                bullet.transform.rotation = canionR.rotation;
             }
             if (ren.flipX == true)
             {
-                bullet.transform.position = canonl.position;
-                bullet.transform.rotation = canonl.rotation;
+                bullet.transform.position = canionL.position;
+                bullet.transform.rotation = canionL.rotation;
             }
             bullet.SetActive(true);
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             rb.isKinematic = false;
             if (ren.flipX == false){
-                rb.velocity = new Vector2(velocidadbala, Random.Range(-0.2f, 0.2f));
+                rb.velocity = new Vector2(velocidadBala, Random.Range(-0.2f, 0.2f));
             }
             if (ren.flipX == true)
             {
-                rb.velocity = new Vector2(-velocidadbala, Random.Range(-0.2f, 0.2f));
+                rb.velocity = new Vector2(-velocidadBala, Random.Range(-0.2f, 0.2f));
             }
 
 
         }
         if (Input.GetKeyDown(KeyCode.UpArrow) && rbd.velocity.y == 0)
         {
-            disparadorsalto = true;
+            salto = true;
         }
         float h = Input.GetAxis("Horizontal");
         if (vivo)
         {
-            rbd.velocity = new Vector2(velocidadmovi * h, rbd.velocity.y);
+            rbd.velocity = new Vector2(velocidadMovimiento * h, rbd.velocity.y);
             if (h == 0)
             {
                 rbd.velocity = new Vector2(0f, rbd.velocity.y);
             }
-            if (disparadorsalto)
+            if (salto)
             {
-                rbd.AddForce(Vector2.up * fuerzasalto, ForceMode2D.Impulse);
-                disparadorsalto = false;
+                rbd.AddForce(Vector2.up * fuerzaSalto, ForceMode2D.Impulse);
+                salto = false;
             }
         }
         if (h < 0)
@@ -140,6 +139,18 @@ public class ControlJugador : MonoBehaviour {
         }
         if (col.gameObject.tag == "Finish"){
             SceneManager.LoadScene("Menu");
+        }
+
+        if (col.gameObject.tag == "consumibleVida")
+        {
+            if ((vidaActual + 50) > vidaMax)
+            {
+                vidaActual = vidaMax;
+            }
+            else
+            {
+                vidaActual += 50;
+            }
         }
     }
 

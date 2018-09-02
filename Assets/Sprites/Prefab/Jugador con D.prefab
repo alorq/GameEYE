@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 58677295660988414}
   - component: {fileID: 114831380934497516}
   m_Layer: 0
-  m_Name: Jugador 1
+  m_Name: Jugador con D
   m_TagString: Jugador
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,7 +95,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1213673388201602}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 59.52, y: 9.66, z: 0}
+  m_LocalPosition: {x: 15.515641, y: 6.207262, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4151534888126344}
@@ -117,7 +117,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 9
   m_Material: {fileID: 6200000, guid: a2e537e466f79d54da7083749c3397f3, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -192,17 +192,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a67d5f8e9cce0541b8085c2a0773ec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadmovi: 30
-  fuerzasalto: 30
+  velocidadMovimiento: 30
+  fuerzaSalto: 50
   terreno: 0
-  max: 0
-  canonr: {fileID: 4151534888126344}
-  canonl: {fileID: 4491789916988254}
+  canionR: {fileID: 4151534888126344}
+  canionL: {fileID: 4491789916988254}
   bulletPrefab: {fileID: 1680027375561486, guid: 48f718952ac046241893030fc3af1671,
     type: 2}
-  velocidadbala: 30
-  totalAmountOfBullets: 50
-  bullets: []
+  velocidadBala: 2
+  totalAmountOfBullets: 20
+  bullets:
+  - {fileID: 0}
   vivo: 1
 --- !u!212 &212455770951988144
 SpriteRenderer:
