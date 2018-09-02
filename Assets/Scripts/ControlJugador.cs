@@ -19,13 +19,17 @@ public class ControlJugador : MonoBehaviour {
 
     private Rigidbody2D rbd;
     private Animator ani;
+    private int p;
 
     public int vidaMax = 250;
     public int vidaActual;
     public bool vivo = true;
     public Slider barraVida;
+    float secondsCounter = 0;
+    float secondsToCount = 5;
 
     private double count = 100;
+    private bool disp;
 
     void Awake()
     {
@@ -43,6 +47,7 @@ public class ControlJugador : MonoBehaviour {
             rb.isKinematic = true;
             bullets.Add(bullet);
         }
+        p = 10;
     }
 
     void Update(){
@@ -50,17 +55,24 @@ public class ControlJugador : MonoBehaviour {
         ani.SetFloat("gravedad", Mathf.Abs(rbd.velocity.y));
         ani.SetBool("terreno", terreno);
         ani.SetBool("vivo", vivo);
-
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            disp = true;
+        }
         barraVida.value = vidaActual;
     }
 
     void FixedUpdate() {
         SpriteRenderer ren = GetComponent<SpriteRenderer>();
-        if (Input.GetKeyDown(KeyCode.Z))
+        Debug.Log(p);
+        if (p<2)
         {
-            GameObject bullet = bullets[0];
-            bullets.RemoveAt(0);
-            Debug.Log(bullet.GetInstanceID());
+            Recargar();
+        }
+        if (disp==true && p>1)
+        {
+            GameObject bullet = bullets[1];
+            bullets.RemoveAt(1);
             bullet.SetActive(false);
             if (ren.flipX == false)
             {
@@ -75,15 +87,16 @@ public class ControlJugador : MonoBehaviour {
             bullet.SetActive(true);
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             rb.isKinematic = false;
-            if (ren.flipX == false){
+            if (ren.flipX == false)
+            {
                 rb.velocity = new Vector2(velocidadBala, Random.Range(-0.2f, 0.2f));
             }
             if (ren.flipX == true)
             {
                 rb.velocity = new Vector2(-velocidadBala, Random.Range(-0.2f, 0.2f));
             }
-
-
+            p--;
+            disp = false;
         }
         if (Input.GetKeyDown(KeyCode.UpArrow) && rbd.velocity.y == 0)
         {
@@ -191,13 +204,22 @@ public class ControlJugador : MonoBehaviour {
         }
     }
 
-    IEnumerator ReUseBullet(GameObject bullet)
+    void Recargar()
     {
-        yield return new WaitForSeconds(3f);
-        bullet.transform.position = new Vector3(-1000, -1000, -1000);
-        Rigidbody rb = bullet.GetComponent<Rigidbody>();
-        rb.velocity = Vector3.zero;
-        rb.isKinematic = true;
-        bullets.Add(bullet);
+        Debug.Log(rbd.velocity);
+        secondsCounter += Time.deltaTime;
+        if (secondsCounter >= secondsToCount)
+        {
+            secondsCounter = 0;
+            for (int i = 0; i < 9; i++)
+            {
+                GameObject bullet = Instantiate(bulletPrefab, new Vector3(-1000, -1000, -1000), Quaternion.identity);
+                Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+                rb.isKinematic = true;
+                bullets.Add(bullet);
+            }
+            p = 10;
+        }
+        disp = false;
     }
 }

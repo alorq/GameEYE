@@ -494,7 +494,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1680027375561486, guid: 48f718952ac046241893030fc3af1671,
     type: 2}
   velocidadBala: 2
-  totalAmountOfBullets: 20
+  totalAmountOfBullets: 12
   bullets:
   - {fileID: 0}
   vidaMax: 250

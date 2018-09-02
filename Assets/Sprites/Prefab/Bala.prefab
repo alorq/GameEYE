@@ -23,9 +23,10 @@ GameObject:
   - component: {fileID: 58133421438758802}
   - component: {fileID: 50038265428653820}
   - component: {fileID: 96131480074769242}
+  - component: {fileID: 114727952918599052}
   m_Layer: 0
   m_Name: Bala
-  m_TagString: Untagged
+  m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54,10 +55,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.0001
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -114,7 +115,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 5
+  m_Time: 0.1
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 1
@@ -123,7 +124,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.016490936
+        value: 0.09340882
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -131,8 +132,8 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.9432173
-        value: 0.016479492
+        time: 0.4617268
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -177,8 +178,20 @@ TrailRenderer:
     textureMode: 0
     generateLightingData: 0
   m_MinVertexDistance: 0.1
-  m_Autodestruct: 0
+  m_Autodestruct: 1
   m_Emitting: 1
+--- !u!114 &114727952918599052
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1680027375561486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eac8a43796e47534b9ea82777fa779d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 4692619856466472, guid: a5df0f2bcaa1d4646bdf673fb426cbd8, type: 2}
 --- !u!212 &212635759679421664
 SpriteRenderer:
   m_ObjectHideFlags: 1
