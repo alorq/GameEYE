@@ -2,29 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ControlJugador : MonoBehaviour {
-    [SerializeField] public float velocidadMovimiento;
-    [SerializeField] public float fuerzaSalto;
-    [SerializeField] public bool terreno;
-    [SerializeField] private Transform canionR;
-    [SerializeField] private Transform canionL;
+    public float velocidadMovimiento;
+    public float fuerzaSalto;
+    public bool terreno;
+    public bool salto;
+
+    [SerializeField] Transform canionR;
+    [SerializeField] Transform canionL;
     [SerializeField] GameObject bulletPrefab;
-    [SerializeField] private float velocidadBala;
+    [SerializeField] float velocidadBala;
     [SerializeField] int totalAmountOfBullets;
     [SerializeField] List<GameObject> bullets = new List<GameObject>();
+
     private Rigidbody2D rbd;
     private Animator ani;
-    private bool salto;
-    private int vidaMax = 250;
-    private int vidaActual;
+
+    public int vidaMax = 250;
+    public int vidaActual;
     public bool vivo = true;
+    public Slider barraVida;
+
     private double count = 100;
+
+    void Awake()
+    {
+        vidaActual = vidaMax;
+        barraVida.value = vidaActual;
+    }
 
     void Start(){
         rbd = GetComponent<Rigidbody2D>();
         ani = GetComponent<Animator>();
-        vidaActual = vidaMax;
         for (int i = 0; i < totalAmountOfBullets; i++)
         {
             GameObject bullet = Instantiate(bulletPrefab, new Vector3(-1000, -1000, -1000), Quaternion.identity);
@@ -39,7 +50,8 @@ public class ControlJugador : MonoBehaviour {
         ani.SetFloat("gravedad", Mathf.Abs(rbd.velocity.y));
         ani.SetBool("terreno", terreno);
         ani.SetBool("vivo", vivo);
-       
+
+        barraVida.value = vidaActual;
     }
 
     void FixedUpdate() {
@@ -143,14 +155,24 @@ public class ControlJugador : MonoBehaviour {
 
         if (col.gameObject.tag == "consumibleVida")
         {
-            if ((vidaActual + 50) > vidaMax)
+            if ((vidaActual + 100) > vidaMax)
             {
                 vidaActual = vidaMax;
             }
             else
             {
-                vidaActual += 50;
+                vidaActual += 100;
             }
+        }
+
+        if (col.gameObject.tag == "Bala")
+        {
+            vidaActual -= 20;
+        }
+
+        if (col.gameObject.tag == "Espina")
+        {
+            vidaActual -= 50;
         }
     }
 
@@ -169,18 +191,6 @@ public class ControlJugador : MonoBehaviour {
         }
     }
 
-    void OnTriggerStay2D(Collider2D col){
-        if (col.gameObject.tag == "Espina" && vidaActual>0){
-            vidaActual -= 2;
-        }
-    }
-
-    void OnTriggerEnter2D(Collider2D col){
-        if (col.gameObject.tag == "Bala"){
-            vidaActual -= 45;
-        }
-    }
-
     IEnumerator ReUseBullet(GameObject bullet)
     {
         yield return new WaitForSeconds(3f);
@@ -190,5 +200,4 @@ public class ControlJugador : MonoBehaviour {
         rb.isKinematic = true;
         bullets.Add(bullet);
     }
-
 }
