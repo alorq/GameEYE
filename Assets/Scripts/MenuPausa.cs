@@ -16,6 +16,7 @@ public class MenuPausa : MonoBehaviour
     IEnumerator confirmarSalida()
     {
         Debug.Log("Esperando SFX");
+        Time.timeScale = 1f;
         yield return new WaitForSeconds(tiempo);
         SceneManager.LoadScene(0);
         Debug.Log("Nivel cerrado");
