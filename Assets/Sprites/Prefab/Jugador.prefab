@@ -682,7 +682,7 @@ MonoBehaviour:
   terreno: 0
   Fx: {fileID: 82495752850904894}
   fire: {fileID: 8300000, guid: f1364d48e48ea4fdab44868cc9b2a10e, type: 3}
-  death: {fileID: 8300000, guid: 2b0937f4e75504da8a8aef2cf114aaee, type: 3}
+  death: {fileID: 8300000, guid: f0f9c11c7257f48feb7f87746b03e573, type: 3}
   canionR: {fileID: 4151534888126344}
   canionL: {fileID: 4491789916988254}
   bulletPrefab: {fileID: 1680027375561486, guid: 48f718952ac046241893030fc3af1671,

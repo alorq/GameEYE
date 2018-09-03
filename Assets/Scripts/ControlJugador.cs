@@ -34,6 +34,7 @@ public class ControlJugador : MonoBehaviour {
     private double count = 100;
     private bool disp;
     private bool salt;
+    private bool mov;
 
     void Awake()
     {
@@ -53,6 +54,7 @@ public class ControlJugador : MonoBehaviour {
         }
         p = 10;
         vivo = true;
+        mov = false;
     }
 
     void Update(){
@@ -128,9 +130,10 @@ public class ControlJugador : MonoBehaviour {
             {
                 rbd.velocity = new Vector2(0f, rbd.velocity.y);
             }
-            if (salt == true && rbd.velocity.y == 0) { 
+            if (salt == true && (rbd.velocity.y == 0 || mov==true)) { 
                 rbd.AddForce(Vector2.up * fuerzaSalto, ForceMode2D.Impulse);
                 salt = false;
+                mov = false;
             }
         }
         if (h < 0)
@@ -166,6 +169,10 @@ public class ControlJugador : MonoBehaviour {
         {
             terreno = false;
             transform.parent = null;
+        }
+        if (col.gameObject.tag == "Movil")
+        {
+            mov = false;
         }
     }
 
@@ -217,6 +224,7 @@ public class ControlJugador : MonoBehaviour {
         if (col.gameObject.tag == "Movil")
         {
             terreno = true;
+            mov = true;
         }
         if (col.gameObject.tag == "lava")
         {
