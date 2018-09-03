@@ -23,16 +23,6 @@ public class scriptPausa : MonoBehaviour {
 
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            playerIsDed = true;
-        }
-
-        if (playerIsDed)
-        {
-            StartCoroutine(GameOver());
-        }
-
     }
 
     public void Continuar()
