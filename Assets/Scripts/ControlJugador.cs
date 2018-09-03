@@ -11,6 +11,7 @@ public class ControlJugador : MonoBehaviour {
     public AudioSource Fx;
     public AudioClip fire;
     public AudioClip death;
+    public AudioClip walk;
 
 
     [SerializeField] Transform canionR;
@@ -255,5 +256,10 @@ public class ControlJugador : MonoBehaviour {
     public void DeathSound()
     {
         Fx.PlayOneShot(death);
+    }
+
+    public void WalkSound()
+    {
+        Fx.PlayOneShot(walk);
     }
 }
