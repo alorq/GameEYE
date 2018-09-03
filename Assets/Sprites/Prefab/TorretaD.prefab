@@ -20,9 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4824804477445972}
   - component: {fileID: 212193588160141302}
+  - component: {fileID: 61199593274399536}
   m_Layer: 0
   m_Name: TorretaD
-  m_TagString: Untagged
+  m_TagString: Torreta
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,10 +37,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4550369286926568}
   - component: {fileID: 212665796825814320}
+  - component: {fileID: 61619269099105046}
+  - component: {fileID: 95693898886100854}
+  - component: {fileID: 114273381558611216}
   - component: {fileID: 114203969881510186}
   m_Layer: 0
   m_Name: Turret
-  m_TagString: Untagged
+  m_TagString: Torreta
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1604330729330490}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.64, y: 0.51, z: 0.015625}
+  m_LocalPosition: {x: 6.37, y: 0.49, z: 0.015625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4550369286926568}
@@ -93,13 +97,81 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1101445034368856}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30.533321, y: 3.9762578, z: 2}
+  m_LocalPosition: {x: 5.2, y: 5.1, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4550369286926568}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &61199593274399536
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1101445034368856}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 1.3568416}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 4.818182}
+    newSize: {x: 2, y: 4.818182}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2, y: 7.531865}
+  m_EdgeRadius: 0
+--- !u!61 &61619269099105046
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1372876489508392}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1.2528477, y: 0.57938576}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.37134266, y: 0.22590776}
+    oldSize: {x: 9.909091, y: 3}
+    newSize: {x: 1.66875, y: 0.55625}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 9.97591, y: 1.9111748}
+  m_EdgeRadius: 0
+--- !u!95 &95693898886100854
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1372876489508392}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: adfda3f6723bd47499c5fff1b0e9215e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114203969881510186
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -111,14 +183,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d88df90c23dfe45999661b19d7c194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outshot: 1
+  outshot: 1.4
   canon: {fileID: 4504180319949380}
   turnSpeed: 40
-  range: 40
+  range: 70
   velocidadbala: 20
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 1485802392579482, guid: 59404fea06966124ba2ce16876674875,
+    type: 2}
   totalAmountOfBullets: 10
   bullets: []
+--- !u!114 &114273381558611216
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1372876489508392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c9a8ea7557f20d40886e0a08e5d0d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lpoints: 10
+  alive: 0
 --- !u!212 &212193588160141302
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -156,7 +242,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300008, guid: 1097d4b6ec9417547b8ec9f99b910d49, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 2, y: 4.818182}
