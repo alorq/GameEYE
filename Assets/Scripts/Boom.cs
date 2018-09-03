@@ -7,7 +7,7 @@ public class Boom : MonoBehaviour {
     [SerializeField] private bool alive;
     private Animator ani;
     float secondsCounter = 0;
-    float secondsToCount = 1.0f;
+    float secondsToCount = 0.3f;
 
  
     void Start () {

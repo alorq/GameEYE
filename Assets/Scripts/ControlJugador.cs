@@ -8,7 +8,7 @@ public class ControlJugador : MonoBehaviour {
     public float velocidadMovimiento;
     public float fuerzaSalto;
     public bool terreno;
-    public bool salto;
+
 
     [SerializeField] Transform canionR;
     [SerializeField] Transform canionL;
@@ -26,10 +26,11 @@ public class ControlJugador : MonoBehaviour {
     public bool vivo;
     public Slider barraVida;
     float secondsCounter = 0;
-    float secondsToCount = 5;
+    float secondsToCount = 2;
 
     private double count = 100;
     private bool disp;
+    private bool salt;
 
     void Awake()
     {
@@ -56,9 +57,13 @@ public class ControlJugador : MonoBehaviour {
         ani.SetFloat("gravedad", Mathf.Abs(rbd.velocity.y));
         ani.SetBool("terreno", terreno);
         ani.SetBool("vivo", vivo);
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             disp = true;
+        }
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            salt = true;
         }
         barraVida.value = vidaActual;
     }
@@ -68,7 +73,8 @@ public class ControlJugador : MonoBehaviour {
         {
             secondsCounter += Time.deltaTime;
             vivo = false;
-            if (secondsCounter >= secondsToCount - 3f)
+            rbd.velocity = new Vector2(0, 0);
+            if (secondsCounter >= secondsToCount - 1f)
             {
                 gameObject.SetActive(false);
             }
@@ -108,10 +114,6 @@ public class ControlJugador : MonoBehaviour {
             p--;
             disp = false;
         }
-        if (Input.GetKeyDown(KeyCode.UpArrow) && rbd.velocity.y == 0)
-        {
-            salto = true;
-        }
         float h = Input.GetAxis("Horizontal");
         if (vivo)
         {
@@ -120,10 +122,9 @@ public class ControlJugador : MonoBehaviour {
             {
                 rbd.velocity = new Vector2(0f, rbd.velocity.y);
             }
-            if (salto)
-            {
+            if (salt == true && rbd.velocity.y == 0) { 
                 rbd.AddForce(Vector2.up * fuerzaSalto, ForceMode2D.Impulse);
-                salto = false;
+                salt = false;
             }
         }
         if (h < 0)
@@ -194,7 +195,7 @@ public class ControlJugador : MonoBehaviour {
         }
         if (col.gameObject.tag == "Espina")
         {
-            vidaActual -= 30;
+            vidaActual -= 60;
         }
     }
 
@@ -214,6 +215,10 @@ public class ControlJugador : MonoBehaviour {
         if (col.gameObject.tag == "lava")
         {
             vidaActual -= 15;
+        }
+        if (col.gameObject.tag == "Bicho")
+        {
+            vidaActual -= 3;
         }
     }
 
