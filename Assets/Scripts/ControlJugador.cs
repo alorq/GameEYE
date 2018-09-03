@@ -10,6 +10,7 @@ public class ControlJugador : MonoBehaviour {
     public bool terreno;
     public AudioSource Fx;
     public AudioClip fire;
+    public AudioClip death;
 
 
     [SerializeField] Transform canionR;
@@ -76,6 +77,7 @@ public class ControlJugador : MonoBehaviour {
             secondsCounter += Time.deltaTime;
             vivo = false;
             scriptPausa.playerIsDed = true;
+            DeathSound();
             rbd.velocity = new Vector2(0, 0);
             if (secondsCounter >= secondsToCount - 1f)
             {
@@ -248,5 +250,10 @@ public class ControlJugador : MonoBehaviour {
     public void FireSound()
     {
         Fx.PlayOneShot(fire);
+    }
+
+    public void DeathSound()
+    {
+        Fx.PlayOneShot(death);
     }
 }

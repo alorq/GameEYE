@@ -85264,6 +85264,11 @@ Prefab:
       propertyPath: fire
       value: 
       objectReference: {fileID: 8300000, guid: f1364d48e48ea4fdab44868cc9b2a10e, type: 3}
+    - target: {fileID: 114831380934497516, guid: a5df0f2bcaa1d4646bdf673fb426cbd8,
+        type: 2}
+      propertyPath: death
+      value: 
+      objectReference: {fileID: 8300000, guid: 2b0937f4e75504da8a8aef2cf114aaee, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5df0f2bcaa1d4646bdf673fb426cbd8, type: 2}
   m_IsPrefabAsset: 0
