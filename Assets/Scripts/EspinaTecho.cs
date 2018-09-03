@@ -11,6 +11,7 @@ public class EspinaTecho : MonoBehaviour
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         rb.gravityScale = 0;
+        origenDeteccion.GetComponent<Transform>().position = new Vector2(origenDeteccion.GetComponent<Transform>().position.x - Random.Range(0f,3f), origenDeteccion.GetComponent<Transform>().position.y);
     }
 
     void FixedUpdate()
@@ -20,7 +21,7 @@ public class EspinaTecho : MonoBehaviour
 
     void Caidaespina()
     {
-        RaycastHit2D deteccionJugador = Physics2D.CircleCast(origenDeteccion.transform.position, 20f, Vector2.down, 5f);
+        RaycastHit2D deteccionJugador = Physics2D.Raycast(origenDeteccion.transform.position, Vector2.down);
         if (deteccionJugador.collider.gameObject.tag == "Jugador")
         {
             rb.gravityScale = 7;

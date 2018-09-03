@@ -192,10 +192,6 @@ public class ControlJugador : MonoBehaviour {
         {
             vidaActual -= 50;
         }
-        if (col.gameObject.tag == "lava")
-        {
-            vidaActual -= 60;
-        }
         if (col.gameObject.tag == "Espina")
         {
             vidaActual -= 30;
@@ -214,6 +210,10 @@ public class ControlJugador : MonoBehaviour {
         if (col.gameObject.tag == "Movil")
         {
             terreno = true;
+        }
+        if (col.gameObject.tag == "lava")
+        {
+            vidaActual -= 15;
         }
     }
 

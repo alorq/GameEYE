@@ -486,7 +486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidadMovimiento: 30
-  fuerzaSalto: 50
+  fuerzaSalto: 66
   terreno: 0
   salto: 0
   canionR: {fileID: 4151534888126344}
