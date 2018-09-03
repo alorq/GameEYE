@@ -134,7 +134,6 @@ public class ControlJugador : MonoBehaviour {
             if (salt == true && (rbd.velocity.y == 0 || mov==true)) { 
                 rbd.AddForce(Vector2.up * fuerzaSalto, ForceMode2D.Impulse);
                 salt = false;
-                mov = false;
             }
         }
         if (h < 0)
@@ -150,13 +149,6 @@ public class ControlJugador : MonoBehaviour {
             {
                 ren.flipX = false;
             }
-        }
-        if (vidaActual <= 0) {
-            vivo = false;
-            count -= 1.2;
-        }
-        if (count < 0){
-            SceneManager.LoadScene("Menu");
         }
     }
 
