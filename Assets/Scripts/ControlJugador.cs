@@ -73,6 +73,7 @@ public class ControlJugador : MonoBehaviour {
         {
             secondsCounter += Time.deltaTime;
             vivo = false;
+            scriptPausa.playerIsDed = true;
             rbd.velocity = new Vector2(0, 0);
             if (secondsCounter >= secondsToCount - 1f)
             {
