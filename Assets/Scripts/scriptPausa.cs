@@ -46,12 +46,11 @@ public class scriptPausa : MonoBehaviour {
 
     IEnumerator GameOver()
     {
-        playerIsDed = false;
         Debug.Log("Mistakes were made...");
+        playerIsDed = false;
         yield return new WaitForSeconds(2f);
         Debug.Log("Activando Game Over");
         IUGameOver.SetActive(true);
-        Time.timeScale = 0f;
         Debug.Log("Juego ahora en pausa");
     }
 }

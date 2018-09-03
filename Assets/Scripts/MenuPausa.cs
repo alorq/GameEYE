@@ -10,7 +10,6 @@ public class MenuPausa : MonoBehaviour
     public void Confirmar()
     {
         Debug.Log("Regresando al menú principal");
-        Time.timeScale = 1f;
         StartCoroutine(confirmarSalida());
     }
 
@@ -21,6 +20,5 @@ public class MenuPausa : MonoBehaviour
         SceneManager.LoadScene(0);
         Debug.Log("Nivel cerrado");
         scriptPausa.juegoEnPausa = false;
-        scriptPausa.playerIsDed = false;
     }
 }
