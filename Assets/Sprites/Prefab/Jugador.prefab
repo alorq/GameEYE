@@ -493,7 +493,7 @@ MonoBehaviour:
   canionL: {fileID: 4491789916988254}
   bulletPrefab: {fileID: 1680027375561486, guid: 48f718952ac046241893030fc3af1671,
     type: 2}
-  velocidadBala: 2
+  velocidadBala: 30
   totalAmountOfBullets: 12
   bullets:
   - {fileID: 0}

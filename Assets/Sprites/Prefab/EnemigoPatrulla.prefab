@@ -22,11 +22,13 @@ GameObject:
   - component: {fileID: 212274351955126100}
   - component: {fileID: 58700335389220790}
   - component: {fileID: 50614272319577378}
-  - component: {fileID: 95038999962305392}
+  - component: {fileID: 114687808231816236}
   - component: {fileID: 114989900256081414}
+  - component: {fileID: 114618481239165340}
+  - component: {fileID: 95097162973342000}
   m_Layer: 0
   m_Name: EnemigoPatrulla
-  m_TagString: Untagged
+  m_TagString: Bicho
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1422027196084594}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 87.43418, y: -6.332324, z: 0}
+  m_LocalPosition: {x: 61.99587, y: 6.421933, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4506998529265868}
@@ -108,7 +110,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.3}
   serializedVersion: 2
   m_Radius: 3
---- !u!95 &95038999962305392
+--- !u!95 &95097162973342000
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -117,7 +119,7 @@ Animator:
   m_GameObject: {fileID: 1422027196084594}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 33b599feb4bfbed43a5c508f10bf5271, type: 2}
+  m_Controller: {fileID: 9100000, guid: 22132cd8f5bf75d4f9cb6c3c8eb57984, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -126,6 +128,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114618481239165340
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1422027196084594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c9a8ea7557f20d40886e0a08e5d0d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lpoints: 30
+  alive: 1
+--- !u!114 &114687808231816236
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1422027196084594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c9a8ea7557f20d40886e0a08e5d0d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lpoints: 20
+  alive: 0
 --- !u!114 &114989900256081414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -138,10 +166,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidadSalto: 0
-  player: {fileID: 0}
+  player: {fileID: 4692619856466472, guid: a5df0f2bcaa1d4646bdf673fb426cbd8, type: 2}
   velocidad: -12
   deteccion: {fileID: 4506998529265868}
   zonahostil: 30
+  v: 1
   rb: {fileID: 50614272319577378}
 --- !u!212 &212274351955126100
 SpriteRenderer:

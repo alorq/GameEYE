@@ -10,7 +10,7 @@ public class EnemigoPatrulla : MonoBehaviour
     [SerializeField] public float velocidad;
     [SerializeField] public Transform deteccion;
     [SerializeField] public float zonahostil;
-    bool v = true;
+    [SerializeField]  bool v;
 
     private bool movimientoDerecha = true;
     public Rigidbody2D rb;
@@ -18,6 +18,7 @@ public class EnemigoPatrulla : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        v = true;
     }
 
     private void FixedUpdate()
@@ -64,7 +65,7 @@ public class EnemigoPatrulla : MonoBehaviour
             }
         }
         float k= transform.position.x - player.position.x;
-        if (Mathf.Abs(k) < zonahostil && Mathf.Abs(transform.position.y-player.position.y)<5f)
+        if (Mathf.Abs(k) < zonahostil && Mathf.Abs(transform.position.y-player.position.y)<8f)
         {
             v = false;
             if (k < 0 && movimientoDerecha == true)
@@ -76,6 +77,8 @@ public class EnemigoPatrulla : MonoBehaviour
             {
                 transform.eulerAngles = new Vector3(0, 0, 0);
                 movimientoDerecha = true;
+            }
+            if (k == 0){
             }
         }
         else

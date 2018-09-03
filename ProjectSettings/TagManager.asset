@@ -23,6 +23,9 @@ TagManager:
   - Salto
   - CeilingSpike
   - Metal
+  - Bicho
+  - Torreta
+  - lava
   layers:
   - Default
   - TransparentFX

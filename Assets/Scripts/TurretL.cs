@@ -32,10 +32,11 @@ public class TurretL : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Jugador").transform;
     }
 
+    
     void FixedUpdate()
     {
         float distance = Vector2.Distance(player.position, transform.position);
-        if ((player.position.x - transform.position.x) < -0.2f && distance < range)
+        if ((player.position.x - transform.position.x) < 0.2f && distance < range)
         {
             Vector2 dir = (player.position - transform.position);
             Vector2 nor = dir.normalized;
