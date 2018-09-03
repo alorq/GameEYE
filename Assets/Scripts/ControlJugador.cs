@@ -23,7 +23,7 @@ public class ControlJugador : MonoBehaviour {
 
     public int vidaMax = 250;
     public int vidaActual;
-    public bool vivo = true;
+    public bool vivo;
     public Slider barraVida;
     float secondsCounter = 0;
     float secondsToCount = 5;
@@ -48,6 +48,7 @@ public class ControlJugador : MonoBehaviour {
             bullets.Add(bullet);
         }
         p = 10;
+        vivo = true;
     }
 
     void Update(){
@@ -63,6 +64,15 @@ public class ControlJugador : MonoBehaviour {
     }
 
     void FixedUpdate() {
+        if (vidaActual <= 0)
+        {
+            secondsCounter += Time.deltaTime;
+            vivo = false;
+            if (secondsCounter >= secondsToCount - 3f)
+            {
+                gameObject.SetActive(false);
+            }
+        }
         SpriteRenderer ren = GetComponent<SpriteRenderer>();
         Debug.Log(p);
         if (p<2)
@@ -180,12 +190,15 @@ public class ControlJugador : MonoBehaviour {
 
         if (col.gameObject.tag == "Bala")
         {
-            vidaActual -= 20;
+            vidaActual -= 50;
         }
-
+        if (col.gameObject.tag == "lava")
+        {
+            vidaActual -= 60;
+        }
         if (col.gameObject.tag == "Espina")
         {
-            vidaActual -= 50;
+            vidaActual -= 30;
         }
     }
 
