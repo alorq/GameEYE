@@ -23,6 +23,11 @@ public class scriptPausa : MonoBehaviour {
 
         }
 
+        if (playerIsDed)
+        {
+            StartCoroutine(GameOver());
+        }
+
     }
 
     public void Continuar()
