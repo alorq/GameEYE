@@ -8,6 +8,8 @@ public class ControlJugador : MonoBehaviour {
     public float velocidadMovimiento;
     public float fuerzaSalto;
     public bool terreno;
+    public AudioSource Fx;
+    public AudioClip fire;
 
 
     [SerializeField] Transform canionR;
@@ -90,6 +92,7 @@ public class ControlJugador : MonoBehaviour {
         {
             GameObject bullet = bullets[1];
             bullets.RemoveAt(1);
+            FireSound();
             bullet.SetActive(false);
             if (ren.flipX == false)
             {
@@ -240,5 +243,10 @@ public class ControlJugador : MonoBehaviour {
             p = 10;
         }
         disp = false;
+    }
+
+    public void FireSound()
+    {
+        Fx.PlayOneShot(fire);
     }
 }
