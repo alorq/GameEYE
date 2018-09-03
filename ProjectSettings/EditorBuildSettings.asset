@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Niveles/MenuPrincipal.unity
     guid: 34b70b4af81fc564ba15a16f4905ce7f
   - enabled: 1
-    path: Assets/Niveles/Nivel1.unity
-    guid: 059a50f59486b8a4badd91a4005238ca
+    path: Assets/Niveles/Nivel1B.unity
+    guid: 6695c2e2495dfef48bf1192403c7de02
   m_configObjects: {}
