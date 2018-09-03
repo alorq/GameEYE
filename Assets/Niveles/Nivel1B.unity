@@ -39176,11 +39176,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4508398732687572, guid: 09e4dcf0413a0554aa3cc367d182b11e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 74.3
+      value: 170.1
       objectReference: {fileID: 0}
     - target: {fileID: 4508398732687572, guid: 09e4dcf0413a0554aa3cc367d182b11e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -7
+      value: -6.3
       objectReference: {fileID: 0}
     - target: {fileID: 4508398732687572, guid: 09e4dcf0413a0554aa3cc367d182b11e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -39229,6 +39229,10 @@ Prefab:
         type: 2}
       propertyPath: m_CollisionDetection
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506998529265868, guid: 09e4dcf0413a0554aa3cc367d182b11e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -3.44
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09e4dcf0413a0554aa3cc367d182b11e, type: 2}
@@ -64237,11 +64241,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4508398732687572, guid: 09e4dcf0413a0554aa3cc367d182b11e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 154.6
+      value: 92.1
       objectReference: {fileID: 0}
     - target: {fileID: 4508398732687572, guid: 09e4dcf0413a0554aa3cc367d182b11e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -6.1
+      value: -6.8
       objectReference: {fileID: 0}
     - target: {fileID: 4508398732687572, guid: 09e4dcf0413a0554aa3cc367d182b11e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -64290,6 +64294,10 @@ Prefab:
         type: 2}
       propertyPath: m_CollisionDetection
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506998529265868, guid: 09e4dcf0413a0554aa3cc367d182b11e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -3.52
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09e4dcf0413a0554aa3cc367d182b11e, type: 2}
