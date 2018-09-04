@@ -31,19 +31,20 @@ public class ControlJugador : MonoBehaviour {
     public bool vivo;
     public Slider barraVida;
     float secondsCounter = 0;
-    float secondsToCount = 2;
+    float secondsToCount = 2.5f;
 
     private double count = 100;
     private bool disp;
     private bool salt;
     private bool mov;
+    private bool rel;
 
     void Awake()
     {
         vidaActual = vidaMax;
         barraVida.value = vidaActual;
         p = 10;
-        barraMunicion.value = p;
+        barraMunicion.value = 10;
     }
 
     void Start(){
@@ -73,11 +74,20 @@ public class ControlJugador : MonoBehaviour {
         {
             salt = true;
         }
+        else
+        {
+            salt = false;
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            rel = true;
+        }
         barraVida.value = vidaActual;
-        barraMunicion.value = p;
+        barraMunicion.value = p-1;
     }
 
     void FixedUpdate() {
+        Debug.Log(secondsCounter);
         if (vidaActual <= 0)
         {
             secondsCounter += Time.deltaTime;
@@ -92,11 +102,11 @@ public class ControlJugador : MonoBehaviour {
         }
         SpriteRenderer ren = GetComponent<SpriteRenderer>();
         Debug.Log(p);
-        if (p<2)
+        if (rel)
         {
             Recargar();
         }
-        if (disp==true && p>1)
+        if (disp==true && p>1 && rel==false)
         {
             GameObject bullet = bullets[1];
             bullets.RemoveAt(1);
@@ -248,21 +258,33 @@ public class ControlJugador : MonoBehaviour {
 
     void Recargar()
     {
-        Debug.Log(rbd.velocity);
+       
         secondsCounter += Time.deltaTime;
+       
+        Debug.Log("hola");
         if (secondsCounter >= secondsToCount)
         {
             secondsCounter = 0;
-            for (int i = 0; i < 9; i++)
+            int i;
+            Debug.Log("p="+p);
+            if (p < 10f)
             {
-                GameObject bullet = Instantiate(bulletPrefab, new Vector3(-1000, -1000, -1000), Quaternion.identity);
-                Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-                rb.isKinematic = true;
-                bullets.Add(bullet);
+                Debug.Log("hola");
+                for (i=p-1; i < 9; i++)
+                {
+                    
+                    GameObject bullet = Instantiate(bulletPrefab, new Vector3(-1000, -1000, -1000), Quaternion.identity);
+                    Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+                    rb.isKinematic = true;
+                    bullets.Add(bullet);
+                }
+                p = 10;
+                rel = false;
             }
-            p = 10;
+           
         }
         disp = false;
+       
     }
 
     public void FireSound()
