@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class scriptPausa : MonoBehaviour {
 
+    public static bool endGame = false;
     public static bool playerIsDed = false;
     public static bool juegoEnPausa;
     public GameObject IUPausa;
     public GameObject IUGameOver;
+    public GameObject IUEnd;
 
 	void Update () {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -26,6 +29,11 @@ public class scriptPausa : MonoBehaviour {
         if (playerIsDed)
         {
             StartCoroutine(GameOver());
+        }
+
+        if (endGame)
+        {
+            StartCoroutine(End());
         }
 
     }
@@ -52,5 +60,15 @@ public class scriptPausa : MonoBehaviour {
         Debug.Log("Activando Game Over");
         IUGameOver.SetActive(true);
         Debug.Log("Juego ahora en pausa");
+    }
+
+    IEnumerator End()
+    {
+        Debug.Log("The end is near...");
+        IUEnd.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        Debug.Log("volviendo al menu principal");
+        SceneManager.LoadScene(0);
+        endGame = false;
     }
 }

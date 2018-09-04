@@ -211,7 +211,13 @@ public class ControlJugador : MonoBehaviour {
         {
             SceneManager.LoadScene(2);
         }
+
+        if (col.gameObject.tag == "ending")
+        {
+            scriptPausa.endGame = true;
+        }
     }
+
 
     void OnCollisionStay2D(Collision2D col) {
         if (col.gameObject.tag == "Terreno")

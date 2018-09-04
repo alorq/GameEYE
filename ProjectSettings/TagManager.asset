@@ -27,6 +27,7 @@ TagManager:
   - Torreta
   - lava
   - final
+  - ending
   layers:
   - Default
   - TransparentFX
