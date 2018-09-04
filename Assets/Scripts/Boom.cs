@@ -41,6 +41,14 @@ public class Boom : MonoBehaviour {
         {
             lpoints -= 10;
         }
+        if (c.gameObject.tag == "Espina")
+        {
+            lpoints -= 10;
+        }
+        if (c.gameObject.tag == "lava")
+        {
+            lpoints -= 30;
+        }
     }
     
 }
