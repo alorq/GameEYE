@@ -261,15 +261,12 @@ public class ControlJugador : MonoBehaviour {
        
         secondsCounter += Time.deltaTime;
        
-        Debug.Log("hola");
         if (secondsCounter >= secondsToCount)
         {
             secondsCounter = 0;
             int i;
-            Debug.Log("p="+p);
             if (p < 10f)
             {
-                Debug.Log("hola");
                 for (i=p-1; i < 9; i++)
                 {
                     
@@ -279,12 +276,11 @@ public class ControlJugador : MonoBehaviour {
                     bullets.Add(bullet);
                 }
                 p = 10;
-                rel = false;
+               
             }
-           
+            rel = false;
+            disp = false;
         }
-        disp = false;
-       
     }
 
     public void FireSound()
