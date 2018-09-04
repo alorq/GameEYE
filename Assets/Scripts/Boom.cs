@@ -1,23 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Boom : MonoBehaviour {
-    [SerializeField] private float lpoints;
-    [SerializeField] private bool alive;
+    private float lpoints;
+    private bool alive;
     private Animator ani;
     float secondsCounter = 0;
     float secondsToCount = 0.3f;
+    public Slider barraVida;
 
- 
-    void Start () {
+    private void Awake()
+    {
+        lpoints = 50;
         alive = true;
+        barraVida.value = lpoints;
+    }
+    void Start () {
         ani = GetComponent<Animator>();
     }
 
   
     void Update()
     {
+        barraVida.value = lpoints;
         if (lpoints <= 0)
         {
             alive = false;
@@ -32,8 +39,8 @@ public class Boom : MonoBehaviour {
                 Destroy(gameObject);
             }
         }
-       
     }
+
 
    void OnCollisionEnter2D(Collision2D c)
     {

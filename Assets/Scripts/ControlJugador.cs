@@ -24,6 +24,7 @@ public class ControlJugador : MonoBehaviour {
     private Rigidbody2D rbd;
     private Animator ani;
     private int p;
+    public Slider barraMunicion;
 
     public int vidaMax = 250;
     public int vidaActual;
@@ -41,6 +42,8 @@ public class ControlJugador : MonoBehaviour {
     {
         vidaActual = vidaMax;
         barraVida.value = vidaActual;
+        p = 10;
+        barraMunicion.value = p;
     }
 
     void Start(){
@@ -53,7 +56,6 @@ public class ControlJugador : MonoBehaviour {
             rb.isKinematic = true;
             bullets.Add(bullet);
         }
-        p = 10;
         vivo = true;
         mov = false;
     }
@@ -72,6 +74,7 @@ public class ControlJugador : MonoBehaviour {
             salt = true;
         }
         barraVida.value = vidaActual;
+        barraMunicion.value = p;
     }
 
     void FixedUpdate() {
