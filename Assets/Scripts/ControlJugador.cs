@@ -205,14 +205,6 @@ public class ControlJugador : MonoBehaviour {
         }
     }
 
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.gameObject.tag == "final")
-        {
-            SceneManager.LoadScene(2);
-        }
-    }
-
     void OnCollisionStay2D(Collision2D col) {
         if (col.gameObject.tag == "Terreno")
         {
