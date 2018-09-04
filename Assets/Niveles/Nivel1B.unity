@@ -20804,7 +20804,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {fileID: 875520387}
   Velocidad: 0.125
-  offset: {x: 0, y: 7, z: -10}
+  offset: {x: 0, y: 5, z: -10}
 --- !u!81 &434582666
 AudioListener:
   m_ObjectHideFlags: 0
@@ -91701,7 +91701,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4074909292671550, guid: 720d2df1aa8f4c24fbd580840fd16942, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 20
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4074909292671550, guid: 720d2df1aa8f4c24fbd580840fd16942, type: 2}
       propertyPath: m_LocalRotation.x
