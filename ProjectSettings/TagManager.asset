@@ -26,6 +26,7 @@ TagManager:
   - Bicho
   - Torreta
   - lava
+  - final
   layers:
   - Default
   - TransparentFX
